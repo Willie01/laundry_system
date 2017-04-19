@@ -1,0 +1,62 @@
+.updated-text {
+  position: absolute;
+  left: 0;
+  right: 0;
+  padding: 10px 0;
+  font-size: 11px;
+  text-align: center;
+}
+
+.table-view-cell .icon {
+  color: #007aff;
+}
+.content {
+	background-image: url('../img/login.jpg');
+	background-repeat: no-repeat; 
+	background-position: fixed; 
+	background-position: center top;
+}
+.logo{
+	position: absolute;
+	top: 20%;
+  left: 35%;
+  width: 30%;
+}
+.portrait{
+  position: relative;
+  margin-top: 10%;
+  left: 35%;
+  width: 30%;
+  border-radius: 100px;
+}
+.portraitname{
+    position: :relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin: 0 0;
+    font-size: 17px;
+    font-weight: 500;
+    line-height: 1;
+    color: #000;
+    text-align: center;
+    white-space: nowrap;
+
+}
+.loginform{
+	position: absolute;
+	top: 50%;
+}
+.forget-password {
+  float: right;
+  width: 35%;
+  padding: 10px 10px;
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+  color: #0000CD;
+  line-height: 1;
+}
+.personalsetting{
+  position: relative;
+  margin-top: 5%;
+  vertical-align: baseline;
+}

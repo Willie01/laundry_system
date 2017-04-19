@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Order:</strong>
+  <%= @rank_comment.order %>
+</p>
+
+<p>
+  <strong>Courier rank:</strong>
+  <%= @rank_comment.courier_rank %>
+</p>
+
+<p>
+  <strong>Factory rank:</strong>
+  <%= @rank_comment.factory_rank %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @rank_comment.comment %>
+</p>
+
+<%= link_to 'Edit', edit_rank_comment_path(@rank_comment) %> |
+<%= link_to 'Back', rank_comments_path %>

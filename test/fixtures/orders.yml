@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  status: MyString
+  item_num: 1
+  totol_price: 9.99
+  address: MyString
+  finished_date: 2017-04-10
+
+two:
+  user: two
+  status: MyString
+  item_num: 1
+  totol_price: 9.99
+  address: MyString
+  finished_date: 2017-04-10

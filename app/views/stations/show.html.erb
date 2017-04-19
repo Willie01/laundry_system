@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Factory:</strong>
+  <%= @station.factory_id %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @station.city_id %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @station.address %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @station.phone %>
+</p>
+
+<%= link_to 'Edit', edit_station_path(@station) %> |
+<%= link_to 'Back', stations_path %>

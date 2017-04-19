@@ -1,0 +1,42 @@
+<%= form_for(courier) do |f| %>
+  <% if courier.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(courier.errors.count, "error") %> prohibited this courier from being saved:</h2>
+
+      <ul>
+      <% courier.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :telphone %>
+    <%= f.text_field :telphone %>
+  </div>
+
+  <div class="field">
+    <%= f.label :portrait %>
+    <%= f.text_field :portrait %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+  </div>
+
+  <div class="field">
+    <%= f.label :rank %>
+    <%= f.number_field :rank %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

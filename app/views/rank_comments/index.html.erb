@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rank Comments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Order</th>
+      <th>Courier rank</th>
+      <th>Factory rank</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rank_comments.each do |rank_comment| %>
+      <tr>
+        <td><%= rank_comment.order %></td>
+        <td><%= rank_comment.courier_rank %></td>
+        <td><%= rank_comment.factory_rank %></td>
+        <td><%= rank_comment.comment %></td>
+        <td><%= link_to 'Show', rank_comment %></td>
+        <td><%= link_to 'Edit', edit_rank_comment_path(rank_comment) %></td>
+        <td><%= link_to 'Destroy', rank_comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rank Comment', new_rank_comment_path %>

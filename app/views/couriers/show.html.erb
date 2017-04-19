@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @courier.name %>
+</p>
+
+<p>
+  <strong>Telphone:</strong>
+  <%= @courier.telphone %>
+</p>
+
+<p>
+  <strong>Portrait:</strong>
+  <%= @courier.portrait %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @courier.status %>
+</p>
+
+<p>
+  <strong>Rank:</strong>
+  <%= @courier.rank %>
+</p>
+
+<%= link_to 'Edit', edit_courier_path(@courier) %> |
+<%= link_to 'Back', couriers_path %>
