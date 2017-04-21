@@ -46,8 +46,8 @@ Rails.application.routes.draw do
   put '/api/products/:id' ,to: 'products#update', format: 'json'
   post '/api/update/products/:id' ,to: 'products#update', format: 'json'
   # 删除 ‘某个产品’
-  delete '/api/products/:id' ,to: 'products#delete', format: 'json'
-  post '/api/delete/products/:id' ,to: 'products#delete', format: 'json'
+  delete '/api/products/:id' ,to: 'products#destroy', format: 'json'
+  post '/api/delete/products/:id' ,to: 'products#destroy', format: 'json'
 
 
   # 品类 相关接口 category
@@ -65,11 +65,11 @@ Rails.application.routes.draw do
   put '/api/categories/:id', to: 'categories#update', format: 'json'
   post '/api/update/categories/:id', to: 'categories#update', format: 'json'
   # 删除 ‘某个品类’
-  delete '/api/categories/:id' ,to: 'categories#delete', format: 'json'
-  post '/api/delete/categories/:id' ,to: 'categories#delete', format: 'json'
+  delete '/api/categories/:id' ,to: 'categories#destroy', format: 'json'
+  post '/api/delete/categories/:id' ,to: 'categories#destroy', format: 'json'
 
 
-  # 订单 相关接口 order
+  # 订单 相关接口 order （订单状态包括 0:未取单 1:进行中 2:已完成）
   # 显示 ‘所有用户’ 的 ‘所有订单’
   get '/api/orders', to: 'orders#index', format: 'json' 
   # 显示 ‘某个订单’
@@ -82,14 +82,24 @@ Rails.application.routes.draw do
   get '/api/users/:user_id/statuses/:status/orders', to: 'orders#ordersbyuserandstatus', format: 'json'
   # 显示 ‘某个用户’的‘某个订单’
   get '/api/users/:user_id/orders/:id', to: 'orders#orderbyuserandid', format: 'json'
+
+  # 显示 ‘某个取送员’ 的 ‘所有订单’
+  get '/api/couriers/:courier_id/orders', to: 'orders#ordersbycourier', format: 'json'
+  # 显示 ‘某个取送员’ 的 ‘某种状态’ 的 ‘所有订单’ 
+  get '/api/couriers/:courier_id/statuses/:status/orders', to: 'orders#ordersbycourierandstatus', format: 'json'
+  # 显示 ‘某个工厂’ 的 ‘所有订单’
+  get '/api/factories/:factory_id/orders', to: 'orders#ordersbyfactory', format: 'json'
+  # 显示 ‘某个工厂’ 的 ‘某种状态’ 的 ‘所有订单’ 
+  get '/api/factories/:factory_id/statuses/:status/orders', to: 'orders#ordersbyfactoryandstatus', format: 'json'
+
   # 添加 ‘某个订单’
   post '/api/orders', to: 'orders#create', format: 'json'
   # 更新 ‘某个订单’
   put '/api/orders/:id' ,to: 'orders#update', format: 'json'
   post '/api/update/orders/:id' ,to: 'orders#update', format: 'json'
-  # 删除 ‘某个产品’
-  delete '/api/orders/:id' ,to: 'orders#delete', format: 'json'
-  post '/api/delete/orders/:id' ,to: 'orders#delete', format: 'json'
+  # 删除 ‘某个订单’
+  delete '/api/orders/:id' ,to: 'orders#destroy', format: 'json'
+  post '/api/delete/orders/:id' ,to: 'orders#destroy', format: 'json'
 
 
   # 订单项 相关接口 order_item
@@ -102,9 +112,9 @@ Rails.application.routes.draw do
   # 更新 ‘某个订单项’
   put '/api/order_items/:id' ,to: 'order_items#update', format: 'json'
   post '/api/update/order_items/:id' ,to: 'order_items#update', format: 'json'
-  # 删除 ‘某个产品’
-  delete '/api/order_items/:id' ,to: 'order_items#delete', format: 'json'
-  post '/api/delete/order_items/:id' ,to: 'order_items#delete', format: 'json'
+  # 删除 ‘某个订单项’
+  delete '/api/order_items/:id' ,to: 'order_items#destroy', format: 'json'
+  post '/api/delete/order_items/:id' ,to: 'order_items#destroy', format: 'json'
 
 
   # 订单评价内容 相关接口 rank_comment
@@ -118,8 +128,8 @@ Rails.application.routes.draw do
   put '/api/rank_comments/:id' ,to: 'rank_comments#update', format: 'json'
   post '/api/update/rank_comments/:id' ,to: 'rank_comments#update', format: 'json'
   # 删除 ‘某个订单评价内容’
-  delete '/api/rank_comments/:id' ,to: 'rank_comments#delete', format: 'json'
-  post '/api/delete/rank_comments/:id' ,to: 'rank_comments#delete', format: 'json'
+  delete '/api/rank_comments/:id' ,to: 'rank_comments#destroy', format: 'json'
+  post '/api/delete/rank_comments/:id' ,to: 'rank_comments#destroy', format: 'json'
 
 
   # 用户 相关接口 user
@@ -133,8 +143,8 @@ Rails.application.routes.draw do
   put '/api/users/:id' ,to: 'users#update', format: 'json'
   post '/api/update/users/:id' ,to: 'users#update', format: 'json'
   # 删除 ‘某个用户’
-  delete '/api/users/:id' ,to: 'users#delete', format: 'json'
-  post '/api/delete/users/:id' ,to: 'users#delete', format: 'json'
+  delete '/api/users/:id' ,to: 'users#destroy', format: 'json'
+  post '/api/delete/users/:id' ,to: 'users#destroy', format: 'json'
 
 
   # 用户地址 相关接口 user_address
@@ -152,8 +162,8 @@ Rails.application.routes.draw do
   put '/api/user_addresses/:id' ,to: 'user_addresses#update', format: 'json'
   post '/api/update/user_addresses/:id' ,to: 'user_addresses#update', format: 'json' 
   # 删除 ‘某个用户地址’
-  delete '/api/user_addresses/:id' ,to: 'user_addresses#delete', format: 'json'
-  post '/api/delete/user_addresses/:id' ,to: 'user_addresses#delete', format: 'json'
+  delete '/api/user_addresses/:id' ,to: 'user_addresses#destroy', format: 'json'
+  post '/api/delete/user_addresses/:id' ,to: 'user_addresses#destroy', format: 'json'
 
 
   # 优惠券 相关借口 coupon
@@ -272,7 +282,6 @@ Rails.application.routes.draw do
 
 
   get '/login', to:'users#new'
-
 
 
   resources :categories

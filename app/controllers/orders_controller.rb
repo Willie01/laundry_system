@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
+  require 'time'
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
   # GET /orders
   # GET /orders.json
   def index
@@ -10,21 +10,38 @@ class OrdersController < ApplicationController
   # GET /user/:user_id/orders
   def ordersbyuser
     @orders = Order.where(user_id: params[:user_id])
+
   end
 
-  # GET /orders/:statuses
+  # GET /statuses/:status/orders
   def ordersbystatus
     @orders = Order.where(status: params[:status])
   end
-  # GET /user/:user_id/status/:status/orders
+  # GET /users/:user_id/statuses/:status/orders
   def ordersbyuserandstatus
     @orders = Order.where(user_id:params[:user_id],status: params[:status])
   end
-  #GET /user/:user_id/order/:id
+  # GET /users/:user_id/orders/:id
   def orderbyuserandid
     @order = Order.find_by(user_id:params[:user_id],id:params[:id])
   end
-  
+  # GET /couriers/:courier_id/orders
+  def ordersbycourier
+    @orders = Order.where(courier_id:params[:courier_id])
+  end
+  # GET /couriers/:courier_id/statuses/:status/orders
+  def ordersbycourierandstatus
+    @orders = Order.where(courier_id:params[:courier_id],status: params[:status])
+  end 
+  # GET /factories/:factory_id/orders
+  def ordersbyfactory
+    @orders = Order.where(factory_id:params[:factory_id])
+  end
+  # GET /factories/:factory_id/statuses/:status/orders
+  def ordersbyfactoryandstatus
+    @orders = Order.where(factory_id:params[:factory_id],status: params[:status])
+  end  
+
   # GET /orders/1
   # GET /orders/1.json
   def show
@@ -88,6 +105,6 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
     #  params.require(:order).permit(:user_id, :status, :item_num, :totol_price, :address, :finished_date)
-      params.permit(:user_id, :status, :item_num, :totol_price, :address, :finished_date, :appointment_time)
+      params.permit(:user_id, :status, :item_num, :totol_price, :address, :finished_date, :appointment_time, :order_number, :courier_id, :factory_id, :city_id, :name)
     end
 end
