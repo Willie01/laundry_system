@@ -230,7 +230,7 @@ Rails.application.routes.draw do
   # 显示 ‘某个 优惠券－用户‘
   get '/api/coupons_users/:id', to: 'coupons_users#show', format: 'json'
 
-  # 显示 ’某个 品类' 的 '优惠券－用户‘
+  # 显示 ’某个 用户' 的 '所有优惠券‘
   get '/api/users/:user_id/coupons_users', to: 'coupons_users#couponsbyuser', format: 'json'
 
   # 添加 ‘某个 优惠券－用户‘

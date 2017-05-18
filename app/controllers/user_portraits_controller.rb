@@ -4,13 +4,13 @@ class UserPortraitsController < ApplicationController
   # GET /user_portraits
   # GET /user_portraits.json
   def index
-    @user_portraits = UserPortrait.find_by_sql ["SELECT up.id, up.user_id, up.portrait_id, up.status, up.created_at, up.updated_at, u.username, p.url FROM user_portraits up, users u, portraits p WHERE up.user_id = u.id AND up.portrait_id = p.id"]
+    @user_portraits = UserPortrait.find_by_sql ["SELECT up.id, up.user_id, up.portrait_id, up.status, up.created_at, up.updated_at, u.username, p.portrait FROM user_portraits up, users u, portraits p WHERE up.user_id = u.id AND up.portrait_id = p.id"]
   end
 
   # GET /user_portraits/1
   # GET /user_portraits/1.json
   def show
-    @user_portraits = UserPortrait.find_by_sql ["SELECT up.id, up.user_id, up.portrait_id, up.status,up.created_at, up.updated_at, u.username, p.url FROM user_portraits up, users u, portraits p WHERE up.user_id = u.id AND up.portrait_id = p.id AND up.id = ?", params[:id]]
+    @user_portraits = UserPortrait.find_by_sql ["SELECT up.id, up.user_id, up.portrait_id, up.status,up.created_at, up.updated_at, u.username, p.portrait FROM user_portraits up, users u, portraits p WHERE up.user_id = u.id AND up.portrait_id = p.id AND up.id = ?", params[:id]]
   end
 
   # GET /user_portraits/new
@@ -23,7 +23,7 @@ class UserPortraitsController < ApplicationController
   end
 
   def portraitbyuser
-    @user_portraits = UserPortrait.find_by_sql ["SELECT up.id, up.user_id, up.portrait_id, up.status,up.created_at, up.updated_at, u.username, p.url FROM user_portraits up, users u, portraits p WHERE up.user_id = u.id AND up.portrait_id = p.id AND up.user_id = ?", params[:user_id]]
+    @user_portraits = UserPortrait.find_by_sql ["SELECT up.id, up.user_id, up.portrait_id, up.status,up.created_at, up.updated_at, u.username, p.portrait FROM user_portraits up, users u, portraits p WHERE up.user_id = u.id AND up.portrait_id = p.id AND up.user_id = ?", params[:user_id]]
   end
 
   # POST /user_portraits

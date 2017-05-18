@@ -4,18 +4,18 @@ class CategoriesCitiesController < ApplicationController
   # GET /categories_cities
   # GET /categories_cities.json
   def index
-    @categories_cities = CategoriesCity.find_by_sql ["SELECT cc.id, cc.category_id, cc.city_id, cc.status, cc.created_at, cc.updated_at, ct.city_name, cate.category_name FROM categories_cities cc, cities ct, categories cate WHERE cc.category_id = cate.id AND cc.city_id = ct.id"]
+    @categories_cities = CategoriesCity.find_by_sql ["SELECT cc.id, cc.category_id, cc.city_id, cc.status, cc.created_at, cc.updated_at, ct.city_name, cate.category_name, cate.logo FROM categories_cities cc, cities ct, categories cate WHERE cc.category_id = cate.id AND cc.city_id = ct.id"]
   end
 
   # GET /categories_cities/1
   # GET /categories_cities/1.json
   def show
-    @categories_cities = CategoriesCity.find_by_sql ["SELECT cc.id, cc.category_id, cc.city_id, cc.status, cc.created_at, cc.updated_at, ct.city_name, cate.category_name FROM categories_cities cc, cities ct, categories cate WHERE cc.category_id = cate.id AND cc.city_id = ct.id AND cc.id = ?", params[:id]]
+    @categories_cities = CategoriesCity.find_by_sql ["SELECT cc.id, cc.category_id, cc.city_id, cc.status, cc.created_at, cc.updated_at, ct.city_name, cate.category_name, cate.logo FROM categories_cities cc, cities ct, categories cate WHERE cc.category_id = cate.id AND cc.city_id = ct.id AND cc.id = ?", params[:id]]
   end
 
   # GET /api/cities/:city_id/categories
   def categoriesbycity
-    @categories_cities = CategoriesCity.find_by_sql ["SELECT cc.id, cc.category_id, cc.city_id, cc.status, cc.created_at, cc.updated_at, ct.city_name, cate.category_name FROM categories_cities cc, cities ct, categories cate WHERE cc.category_id = cate.id AND cc.city_id = ct.id AND cc.city_id = ?", params[:city_id]]
+    @categories_cities = CategoriesCity.find_by_sql ["SELECT cc.id, cc.category_id, cc.city_id, cc.status, cc.created_at, cc.updated_at, ct.city_name, cate.category_name, cate.logo FROM categories_cities cc, cities ct, categories cate WHERE cc.category_id = cate.id AND cc.city_id = ct.id AND cc.city_id = ?", params[:city_id]]
   end
   # GET /categories_cities/new
   def new

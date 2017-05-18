@@ -69,6 +69,6 @@ class PortraitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def portrait_params
-      params.permit(:url, :status)
+      params.permit(:portrait, :status)
     end
 end
