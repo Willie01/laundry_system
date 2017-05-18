@@ -1,0 +1,48 @@
+input,select,button{outline: none;}
+.fcolor_333{color: #333;}
+.fcolor_666{color: #666;}
+.fweight{font-weight: bold;}
+.bgcolor_f6f6f6{background-color: #f6f6f6;}
+.bgcolor_00cccc{background-color: #00cccc;}
+/*model--css*/
+.add-sort-model,.process-changePwd-model,.model-show,.process-type-model,.sorts-model{z-index: 9998;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);display:none}
+/*button--css*/
+.submit{width: 96px;height: 34px;border: none;border-radius: 4px;}
+/*加工端--查看详情*/
+.about-process,.process-changePwd-content{z-index: 9999;width: 300px;height: 300px;position: fixed;top: 50%;left: 50%;margin: -150px 0 0 -150px;background: rgba(255,255,255,1);border-radius: 8px;}
+.about-process-header{padding: 16px 0;text-align: center;border-bottom: 1px solid #ebebeb;}
+.about-process-body{padding:0 24px 24px;text-align: center;}
+.about-process-body div{margin-top: 12px;}
+.about-process-body div input{margin-left: 12px;width: 180px;border: 1px solid #dfdfdf;border-radius: 4px;padding-left: 12px;height: 32px;}
+.about-process-bottom{text-align: center;}
+.about-process-btn:last-of-type{margin-left: 12px;}
+/*加工端--编辑状态*/
+.process-type-content{z-index: 9999;width: 300px;height:191px;position: fixed;top: 50%;left: 50%;margin: -150px 0 0 -95.5px;background: rgba(255,255,255,1);border-radius: 8px;}
+.process-changePwd-header,.process-type-header{padding: 16px 0;text-align: center;border-bottom: 1px solid #ebebeb;}
+.process-choose-type{padding:24px;text-align: center;}
+.process-choose-type select{width:180px;margin-left: 12px;height: 32px;border: 1px solid #dfdfdf;border-radius: 4px;padding-left: 12px;}
+.process-type-bottom{text-align: center;}
+.process-type-bottom button:last-of-type{margin-left: 12px;}
+/*加工端--修改密码*/
+.process-changePwd-content{height: 247px;margin-top: -123.5px;}
+.process-changePwd-body{padding: 0 24px 24px;text-align: center;}
+.process-changePwd-body input{width: 180px;height: 32px;border: 1px solid #dfdfdf;border-radius: 4px;padding-left: 12px;margin-top: 24px;}
+.process-changePwd-body span{width: 56px;display: inline-block;text-align: right;margin-right: 12px;}
+.process-changePwd-bottom{text-align: center;}
+.process-changePwd-bottom button:last-of-type{margin-left: 12px;}
+
+.user_type{width: 56px;display: inline-block;text-align: right;}
+.user_info_conent{height: 359px;margin-top: -180px;}
+/*品类管理*/
+.sorts-content{width: 300px;height:358px;position: absolute;left: 50%;top: 50%;z-index: 999;background: #fff;
+	margin-left: -200px;margin-top:-179px;border-radius: 8px;}
+.sorts-header{height: 52px;line-height: 52px;text-align: center;border-bottom: 1px solid #e5e5e5;}
+.sorts-body{text-align: center;padding-top: 24px;}
+.sort-name,.sort-city,.sort-img,.sort-perice{margin-bottom: 24px;}
+.sort-name span,.sort-city span,.sort-img span,.sort-perice span{margin-right: 12px;}
+.sort-name input,.sort-city input,.sort-perice input{height: 32px;border: 1px solid #dfdfdf;width: 180px;text-indent: 12px;border-radius: 4px;}
+.sort-img img{width: 32px;height: 32px;}
+.sort-img{text-align: left;position: relative;}
+.change-sort-img{position: absolute;top: 0;right: 38px;width: 30px;margin-right: 0;cursor: pointer;}
+.sort-img input{position: absolute;top: 0;opacity: 0;cursor: pointer;width: 30px;}
+.sort-btm{text-align: center;}

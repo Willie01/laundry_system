@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Courier:</strong>
+  <%= @courier_station.courier_id %>
+</p>
+
+<p>
+  <strong>Station:</strong>
+  <%= @courier_station.station_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @courier_station.status %>
+</p>
+
+<%= link_to 'Edit', edit_courier_station_path(@courier_station) %> |
+<%= link_to 'Back', courier_stations_path %>

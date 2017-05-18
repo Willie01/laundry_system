@@ -1,0 +1,32 @@
+<%= form_for(courier_station) do |f| %>
+  <% if courier_station.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(courier_station.errors.count, "error") %> prohibited this courier_station from being saved:</h2>
+
+      <ul>
+      <% courier_station.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :courier_id %>
+    <%= f.number_field :courier_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :station_id %>
+    <%= f.number_field :station_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :status %>
+    <%= f.number_field :status %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

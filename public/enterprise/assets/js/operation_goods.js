@@ -1,0 +1,54 @@
+var app=angular.module("app_goods",[]);
+app.controller("goodsCtr",["$scope","$http",function($scope,$http){
+	$scope.show_list=function(){
+		$http({
+			method:'GET',
+			url:"www.tchautchau.cn/api/products",
+		}).success(function(data){
+			$scope.goods_list=data;
+		}).error(function(){})		
+	}
+	$scope.show_list();
+	$scope.sort_model_hide=function(e){
+		$(e).hide();
+	}
+	$scope.add_sorts=function(e){
+		$(e).show();
+	}
+	$scope.delete_goods=function(e){
+		console.log($(e.target).attr("goods_id"));
+		$http({
+			method:'post',			
+			url:"www.tchautchau.cn/api/products/"+$(e.target).attr("goods_id"),
+		}).success(function(data){
+			console.log(data);
+		}).error(function(){
+			console.log("错误");
+		})
+	}
+	$scope.add_products=function(){
+		$scope.name=$(".product_name").val();
+		$scope.price=$(".product_price").val();
+		$http({
+			method:'POST',
+			url:"www.tchautchau.cn/api/categories",
+			data:$.param({
+				name:$scope.name,
+				price:$scope.price
+			})
+		}).success(function(data){
+			console.log(data)
+		}).error(function(){
+
+		})
+	}
+	$scope.look_product=function(e){
+		var product_id=$(e.target).attr("goods_id");
+		$http({
+			method:'GET',
+			url:"www.tchautchau.cn/api/categories/"+product_id,
+		}).success(function(data){
+			console.log(data);
+		})
+	}
+}])

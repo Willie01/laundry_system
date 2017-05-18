@@ -1,0 +1,2 @@
+module FactoryCitiesHelper
+end

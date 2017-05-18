@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Coupon:</strong>
+  <%= @coupon_city.coupon_id %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @coupon_city.city %>
+</p>
+
+<p>
+  <strong>Start on:</strong>
+  <%= @coupon_city.start_on %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @coupon_city.status %>
+</p>
+
+<%= link_to 'Edit', edit_coupon_city_path(@coupon_city) %> |
+<%= link_to 'Back', coupon_cities_path %>

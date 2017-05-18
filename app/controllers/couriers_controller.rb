@@ -35,9 +35,9 @@ class CouriersController < ApplicationController
   end
 
   # GET /statuses/:id/couriers
-  def couriersbystatus
-    @couriers = Courier.where(status: params[:status])
-  end
+  # def couriersbystatus
+  #   @couriers = Courier.where(status: params[:status])
+  # end
 
   # POST /couriers
   # POST /couriers.json
@@ -88,7 +88,7 @@ class CouriersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def courier_params
     #  params.require(:courier).permit(:name, :telphone, :portrait, :status, :rank)
-      params.permit(:name, :telphone, :portrait, :status, :rank , :id_number , :station_id)
+      params.permit(:courier_name, :telphone, :portrait, :status, :rank ,:password, :id_number)
     end
 
     def courier_params_login

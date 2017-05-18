@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @portrait.name %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @portrait.url %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @portrait.status %>
+</p>
+
+<%= link_to 'Edit', edit_portrait_path(@portrait) %> |
+<%= link_to 'Back', portraits_path %>

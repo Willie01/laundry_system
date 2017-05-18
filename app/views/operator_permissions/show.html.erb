@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Operator:</strong>
+  <%= @operator_permission.operator_id %>
+</p>
+
+<p>
+  <strong>Permission:</strong>
+  <%= @operator_permission.permission_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @operator_permission.status %>
+</p>
+
+<%= link_to 'Edit', edit_operator_permission_path(@operator_permission) %> |
+<%= link_to 'Back', operator_permissions_path %>

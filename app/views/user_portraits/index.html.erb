@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>User Portraits</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user_portraits.each do |user_portrait| %>
+      <tr>
+        <td><%= user_portrait.user_id %></td>
+        <td><%= user_portrait.status %></td>
+        <td><%= link_to 'Show', user_portrait %></td>
+        <td><%= link_to 'Edit', edit_user_portrait_path(user_portrait) %></td>
+        <td><%= link_to 'Destroy', user_portrait, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New User Portrait', new_user_portrait_path %>

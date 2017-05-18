@@ -1,0 +1,2 @@
+class CourierStation < ApplicationRecord
+end

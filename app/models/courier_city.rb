@@ -1,0 +1,2 @@
+class CourierCity < ApplicationRecord
+end

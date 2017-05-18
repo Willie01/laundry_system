@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  courier_id: MyString
+  portrait_id: MyString
+  status: 1
+
+two:
+  courier_id: MyString
+  portrait_id: MyString
+  status: 1

@@ -1,0 +1,2 @@
+class UserCity < ApplicationRecord
+end

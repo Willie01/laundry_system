@@ -1,0 +1,2 @@
+class ProductsCity < ApplicationRecord
+end

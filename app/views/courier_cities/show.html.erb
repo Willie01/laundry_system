@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @courier_city.city_id %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @courier_city.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @courier_city.latitude %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @courier_city.status %>
+</p>
+
+<%= link_to 'Edit', edit_courier_city_path(@courier_city) %> |
+<%= link_to 'Back', courier_cities_path %>

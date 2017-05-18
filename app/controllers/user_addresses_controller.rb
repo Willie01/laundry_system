@@ -4,12 +4,13 @@ class UserAddressesController < ApplicationController
   # GET /user_addresses
   # GET /user_addresses.json
   def index
-    @user_addresses = UserAddress.all
+    @user_addresses = UserAddress.find_by_sql ["SELECT ua.id, ua.user_id, ua.address, ua.telphone, ua.default_address, ua.created_at, ua.updated_at, u.username FROM user_addresses ua, users u WHERE ua.user_id = u.id"]
   end
 
   # GET /user_addresses/1
   # GET /user_addresses/1.json
   def show
+    @user_addresses = UserAddress.find_by_sql ["SELECT ua.id, ua.user_id, ua.address, ua.telphone, ua.default_address, ua.created_at, ua.updated_at, u.username FROM user_addresses ua, users u WHERE ua.user_id = u.id AND ua.id = ?", params[:id]]
   end
 
   # GET /user_addresses/new
@@ -17,18 +18,27 @@ class UserAddressesController < ApplicationController
     @user_address = UserAddress.new
   end
 
+  def addressesbyuser
+    @user_addresses = UserAddress.find_by_sql ["SELECT ua.id, ua.user_id, ua.address, ua.telphone, ua.default_address, ua.created_at, ua.updated_at, u.username FROM user_addresses ua, users u WHERE ua.user_id = u.id AND ua.user_id = ?", params[:user_id]]
+  end
+
+  def defaultaddressbyuser
+    @user_addresses = UserAddress.find_by_sql ["SELECT ua.id, ua.user_id, ua.address, ua.telphone, ua.default_address, ua.created_at, ua.updated_at, u.username FROM user_addresses ua, users u WHERE ua.user_id = u.id AND ua.default_address = 1 AND ua.user_id = ?", params[:user_id]]
+  end
+
+
   # GET /user_addresses/1/edit
   def edit
   end
 
   # GET /user/:user_id/user_addresses
-  def user_addressesbyuser
-    @user_addresses = UserAddress.where(user_id: params[:user_id])
-  end
-  # GET /users/:user_id/user_addresses/:id
-  def user_addressbyuserandid
-    @user_address = UserAddress.find_by(user_id: params[:user_id],id: params[:id])
-  end
+  # def user_addressesbyuser
+  #   @user_addresses = UserAddress.where(user_id: params[:user_id])
+  # end
+  # # GET /users/:user_id/user_addresses/:id
+  # def user_addressbyuserandid
+  #   @user_address = UserAddress.find_by(user_id: params[:user_id],id: params[:id])
+  # end
   # POST /user_addresses
   # POST /user_addresses.json
   def create
@@ -78,6 +88,6 @@ class UserAddressesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_address_params
      # params.require(:user_address).permit(:user_id, :address, :name, :telphone, :default)
-     params.permit(:user_id, :address, :name, :telphone, :default_address)
+     params.permit(:user_id, :address, :telphone, :default_address)
     end
 end

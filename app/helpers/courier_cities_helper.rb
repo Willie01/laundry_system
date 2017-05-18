@@ -1,0 +1,2 @@
+module CourierCitiesHelper
+end

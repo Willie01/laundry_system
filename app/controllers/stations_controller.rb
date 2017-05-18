@@ -21,6 +21,10 @@ class StationsController < ApplicationController
   def edit
   end
 
+  # GET /factories/:factory_id/stations
+  def stationsbyfactory
+    @stations = Station.where(factory_id: params[:factory_id])
+  end
   # POST /stations
   # POST /stations.json
   def create
@@ -69,6 +73,6 @@ class StationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def station_params
-      params.require(:station).permit(:factory_id, :city_id, :address, :phone, :latitude, :longitude, :region_id)
+      params.permit(:address, :phone, :status, :station_name)
     end
 end

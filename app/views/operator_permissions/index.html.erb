@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Operator Permissions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operator</th>
+      <th>Permission</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @operator_permissions.each do |operator_permission| %>
+      <tr>
+        <td><%= operator_permission.operator_id %></td>
+        <td><%= operator_permission.permission_id %></td>
+        <td><%= operator_permission.status %></td>
+        <td><%= link_to 'Show', operator_permission %></td>
+        <td><%= link_to 'Edit', edit_operator_permission_path(operator_permission) %></td>
+        <td><%= link_to 'Destroy', operator_permission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Operator Permission', new_operator_permission_path %>

@@ -1,0 +1,2 @@
+class StationFactory < ApplicationRecord
+end

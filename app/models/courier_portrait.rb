@@ -1,0 +1,2 @@
+class CourierPortrait < ApplicationRecord
+end

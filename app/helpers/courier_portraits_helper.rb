@@ -1,0 +1,2 @@
+module CourierPortraitsHelper
+end

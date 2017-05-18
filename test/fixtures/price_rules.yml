@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price: 9.99
+  type: 
+  start_time: 2017-04-22 21:44:59
+  city_id: 1
+
+two:
+  price: 9.99
+  type: 
+  start_time: 2017-04-22 21:44:59
+  city_id: 1

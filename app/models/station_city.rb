@@ -1,0 +1,2 @@
+class StationCity < ApplicationRecord
+end

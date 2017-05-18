@@ -1,0 +1,22 @@
+<%= form_for(income_status) do |f| %>
+  <% if income_status.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(income_status.errors.count, "error") %> prohibited this income_status from being saved:</h2>
+
+      <ul>
+      <% income_status.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :income_status_name %>
+    <%= f.text_field :income_status_name %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

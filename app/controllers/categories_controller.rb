@@ -21,15 +21,18 @@ class CategoriesController < ApplicationController
   def edit
   end
 
-  # GET /statuses/:status/categories/:id
-  def categorybystatusandid
-    @category = Category.find_by(status: params[:status], id: params[:id])
-  end
+  # def categoriesbycity
+  #   @categories = Category.where(city_id: params[:city_id])
+  # end
+  # # GET /statuses/:status/categories/:id
+  # def categorybystatusandid
+  #   @category = Category.find_by(status: params[:status], id: params[:id])
+  # end
 
-  # GET /statuses/:status/categories
-  def categoriesbystatus
-    @categories = Category.where(status: params[:status])
-  end
+  # # GET /statuses/:status/categories
+  # def categoriesbystatus
+  #   @categories = Category.where(status: params[:status])
+  # end
 
   # POST /categories
   # POST /categories.json
@@ -80,6 +83,6 @@ class CategoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
     #  params.require(:category).permit(:name, :status, :logo)
-    params.permit(:name, :status, :logo)
+    params.permit(:category_name, :status, :logo)
     end
 end

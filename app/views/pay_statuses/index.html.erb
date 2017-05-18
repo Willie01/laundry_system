@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pay Statuses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pay status name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pay_statuses.each do |pay_status| %>
+      <tr>
+        <td><%= pay_status.pay_status_name %></td>
+        <td><%= link_to 'Show', pay_status %></td>
+        <td><%= link_to 'Edit', edit_pay_status_path(pay_status) %></td>
+        <td><%= link_to 'Destroy', pay_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pay Status', new_pay_status_path %>

@@ -44,7 +44,7 @@
 
 </head>
 
-<body class="login">
+<body class="login" >
 
       <div class="form-signin">
     <div class="text-center">
@@ -52,23 +52,22 @@
     </div>
     <hr>
     <div class="tab-content">
-        <div id="login" class="tab-pane active">
-            <form action="index.html">
+        <div id="" class="tab-pane active" >
+            <form method="post" action="/api/factories/login">
                 <p class="text-muted text-center" style="font-size:20px;font-weight: bold;color:#1652d9">
                    加工商登录
                 </p>
                 <p class="text-muted text-center">
                     请输入下列信息
                 </p>
-               <input type="text" placeholder="厂商名" class="form-control top">
-               <input type="text" placeholder="联系方式" class="form-control middle">
-               <input type="password" placeholder="密码" class="form-control bottom">
+               <input type="text" placeholder="请输入厂家电话" name= "phone" class="form-control middle">
+               <input type="password" placeholder="请输入密码" name= "password" class="form-control bottom">
                 <div class="checkbox">
 		  <label>
 		    <input type="checkbox"> 记住账号
 		  </label>
 		</div>
-                <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+                <button class="btn btn-lg btn-primary btn-block" type="submit" >登录</button>
             </form>
         </div>
         <div id="forgot" class="tab-pane">

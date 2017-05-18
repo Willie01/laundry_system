@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Coupon:</strong>
+  <%= @coupon_coupontype.coupon_id %>
+</p>
+
+<p>
+  <strong>Coupon type:</strong>
+  <%= @coupon_coupontype.coupon_type_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @coupon_coupontype.status %>
+</p>
+
+<%= link_to 'Edit', edit_coupon_coupontype_path(@coupon_coupontype) %> |
+<%= link_to 'Back', coupon_coupontypes_path %>

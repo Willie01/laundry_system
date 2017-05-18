@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Coupon Types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Coupon type name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coupon_types.each do |coupon_type| %>
+      <tr>
+        <td><%= coupon_type.coupon_type_name %></td>
+        <td><%= link_to 'Show', coupon_type %></td>
+        <td><%= link_to 'Edit', edit_coupon_type_path(coupon_type) %></td>
+        <td><%= link_to 'Destroy', coupon_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coupon Type', new_coupon_type_path %>

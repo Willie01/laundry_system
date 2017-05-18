@@ -7,6 +7,17 @@ class RegionsController < ApplicationController
     @regions = Region.all
   end
 
+  def provinces
+    @regoins = Region.where(level:"1")
+  end
+
+  def citiesbyprovince
+    @regoins = Region.where(parent_id:params[:parent_id])
+  end
+
+  def districstbycity
+    @regoins = Region.where(parent_id:params[:parent_id])
+  end
   # GET /regions/1
   # GET /regions/1.json
   def show
@@ -69,6 +80,6 @@ class RegionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def region_params
-      params.permit(:name, :parent_id, :level)
+      params.permit(:region_name, :parent_id, :level)
     end
 end

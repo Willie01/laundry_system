@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>City:</strong>
+  <%= @user_city.city_id %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @user_city.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @user_city.latitude %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @user_city.status %>
+</p>
+
+<%= link_to 'Edit', edit_user_city_path(@user_city) %> |
+<%= link_to 'Back', user_cities_path %>

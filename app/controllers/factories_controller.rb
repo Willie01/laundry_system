@@ -26,16 +26,17 @@ class FactoriesController < ApplicationController
 
     # POST /factories/login
   def login
-    @factory = Factory.find_by(telphone: factory_params_login[:telphone],password: factory_params_login[:password])
+    @factory = Factory.find_by(phone: factory_params_login[:phone],password: factory_params_login[:password])
     respond_to do |format|
       if @factory
-        format.html { redirect_to @factory, notice: 'Factory was successfully login.' }
+        format.html { redirect_to "/factory/index.html?factory=#{@factory.id}", notice: 'Factory was successfully login.' }
         format.json { render :show, status: :ok, location: @factory }
       else
         format.json { render json: {status: :unprocessable_entity} }
       end
     end
   end
+
 
   def create
     @factory = Factory.new(factory_params)
@@ -55,6 +56,7 @@ class FactoriesController < ApplicationController
   # PATCH/PUT /factories/1.json
   def update
     respond_to do |format|
+      @factory = Factory.find_by(id:params[:id]);
       if @factory.update(factory_params)
         format.html { redirect_to @factory, notice: 'Factory was successfully updated.' }
         format.json { render :show, status: :ok, location: @factory }
@@ -84,11 +86,11 @@ class FactoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def factory_params
     #  params.require(:factory).permit(:name, :phone, :password, :address, :rank)
-      params.permit(:name, :phone, :password, :address, :rank)
+      params.permit(:factory_name, :phone, :password, :address, :rank, :status)
     end
 
     def factory_params_login
-      params.permit(:telphone, :password)
+      params.permit(:phone, :password)
     end
 
 end

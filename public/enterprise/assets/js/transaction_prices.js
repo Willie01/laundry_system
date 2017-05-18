@@ -1,0 +1,19 @@
+var app=angular.module("app_price",[]);
+app.controller("priceCtr",["$scope","$http",function($scope,$http){
+	$scope.show_list=function(){
+		$http({
+			method:'GET',
+			url:"www.tchautchau.cn/api/products",
+		}).success(function(data){
+			console.log(data);
+			$scope.price_list=data;
+		}).error(function(){})		
+	}
+	$scope.show_list();
+	$scope.sort_model_hide=function(e){
+		$(e).hide();
+	}
+	$scope.add_sorts=function(e){
+		$(e).show();
+	}
+}])

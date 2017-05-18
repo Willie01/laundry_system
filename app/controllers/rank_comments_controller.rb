@@ -4,12 +4,13 @@ class RankCommentsController < ApplicationController
   # GET /rank_comments
   # GET /rank_comments.json
   def index
-    @rank_comments = RankComment.all
+    @rank_comments = RankComment.find_by_sql ["SELECT rc.id, rc.order_id, rc.courier_rank, rc.factory_rank, rc.comment, rc.created_at, rc.updated_at, o.order_name FROM rank_comments rc, orders o WHERE rc.order_id = o.id"]
   end
 
   # GET /rank_comments/1
   # GET /rank_comments/1.json
   def show
+    @rank_comments = RankComment.find_by_sql ["SELECT rc.id, rc.order_id, rc.courier_rank, rc.factory_rank, rc.comment, rc.created_at, rc.updated_at, o.order_name FROM rank_comments rc, orders o WHERE rc.order_id = o.id AND rc.id = ?", params[:id]]
   end
 
   # GET /rank_comments/new

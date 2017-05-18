@@ -1,0 +1,2 @@
+class FactoryCity < ApplicationRecord
+end

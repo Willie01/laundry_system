@@ -1,0 +1,2 @@
+class UserPortrait < ApplicationRecord
+end

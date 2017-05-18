@@ -1,0 +1,2 @@
+module IncomeStatusesHelper
+end

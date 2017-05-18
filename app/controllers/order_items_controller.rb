@@ -4,12 +4,13 @@ class OrderItemsController < ApplicationController
   # GET /order_items
   # GET /order_items.json
   def index
-    @order_items = OrderItem.all
+    @order_items = OrderItem.find_by_sql ["SELECT oi.id, oi.order_id, oi.product_id, oi.number, oi.created_at, oi.updated_at, p.product_name FROM order_items oi, products p WHERE oi.product_id = p.id"]
   end
 
   # GET /order_items/1
   # GET /order_items/1.json
   def show
+     @order_items = OrderItem.find_by_sql ["SELECT oi.id, oi.order_id, oi.product_id, oi.number, oi.created_at, oi.updated_at, p.product_name FROM order_items oi, products p WHERE oi.product_id = p.id AND oi.id = ?",params[:id]]
   end
 
   # GET /order_items/new
@@ -20,7 +21,27 @@ class OrderItemsController < ApplicationController
   # GET /order_items/1/edit
   def edit
   end
-
+  
+  def orderitemsbyorder
+     @order_items = OrderItem.find_by_sql ["SELECT oi.id, oi.order_id, oi.product_id, oi.number, oi.created_at, oi.updated_at, p.product_name FROM order_items oi, products p WHERE oi.product_id = p.id AND oi.order_id = ?",params[:order_id]]
+  end
+  
+  # GET /api/factories/:factory_id/stations/:station_id/products/:product_id/order_items
+  # def orderitemsbyfactoryandstationandproduct
+  #   if params[:station_id] == '0'
+  #     if params[:product_id] == '0'
+  #       @order_items = OrderItem.find_by_sql ["SELECT oi.id,oi.order_id,oi.product_id,oi.number,oi.created_at,oi.updated_at, p.product_name,o.station_id, o.logistics_id, o.pay_status, lo.logistics_name, pr.price, st.station_name FROM order_items oi, products p, orders o, price_rules pr, logistics lo,stations st WHERE st.id=o.station_id AND p.id = oi.product_id AND p.price_type_id = pr.price_type_id AND oi.order_id = o.id AND oi.product_id = pr.product_id AND o.logistics_id = lo.id AND o.factory_id = ?",params[:factory_id]]
+  #     else
+  #       @order_items = OrderItem.find_by_sql ["SELECT oi.id,oi.order_id,oi.product_id,oi.number,oi.created_at,oi.updated_at, p.product_name,o.station_id, o.logistics_id, o.pay_status, lo.logistics_name, pr.price,st.station_name FROM order_items oi, products p, orders o, price_rules pr, logistics lo,stations st WHERE st.id=o.station_id AND p.id = oi.product_id AND p.price_type_id = pr.price_type_id AND oi.order_id = o.id AND oi.product_id = pr.product_id AND o.logistics_id = lo.id AND o.factory_id = ? AND p.id = ?",params[:factory_id],params[:product_id]]
+  #     end
+  #   else
+  #     if params[:product_id] =='0'
+  #       @order_items = OrderItem.find_by_sql ["SELECT oi.id,oi.order_id,oi.product_id,oi.number,oi.created_at,oi.updated_at, p.product_name,o.station_id, o.logistics_id, o.pay_status, lo.logistics_name, pr.price,st.station_name FROM order_items oi, products p, orders o, price_rules pr, logistics lo, stations st WHERE st.id=o.station_id AND p.id = oi.product_id AND p.price_type_id = pr.price_type_id AND oi.order_id = o.id AND oi.product_id = pr.product_id AND o.logistics_id = lo.id AND o.factory_id = ? AND o.station_id = ?",params[:factory_id],params[:station_id]]
+  #     else
+  #       @order_items = OrderItem.find_by_sql ["SELECT oi.id,oi.order_id,oi.product_id,oi.number,oi.created_at,oi.updated_at, p.product_name,o.station_id, o.logistics_id, o.pay_status, lo.logistics_name, pr.price,st.station_name FROM order_items oi, products p, orders o, price_rules pr, logistics lo, stations st WHERE st.id=o.station_id AND p.id = oi.product_id AND p.price_type_id = pr.price_type_id AND oi.order_id = o.id AND oi.product_id = pr.product_id AND o.logistics_id = lo.id AND o.factory_id = ? AND o.station_id = ? AND p.id = ?",params[:factory_id],params[:station_id],params[:product_id]]
+  #     end
+  #   end
+  # end
   # POST /order_items
   # POST /order_items.json
   def create

@@ -10,6 +10,7 @@ class CouponsController < ApplicationController
   # GET /coupons/1
   # GET /coupons/1.json
   def show
+    
   end
 
   # GET /coupons/new
@@ -21,27 +22,26 @@ class CouponsController < ApplicationController
   def edit
   end
   
-  # GET /users/:user_id/coupons
-  def couponsbyuser
-    @coupons = Coupon.where(user_id:params[:user_id])
-  end
+  # # GET /users/:user_id/coupons
+  # def couponsbyuser
+  #   @coupons = Coupon.where(user_id:params[:user_id])
+  # end
 
-  # GET /users/:user_id/coupons/:id
-  def couponbyuserandid
-    @coupon = Coupon.find_by(user_id:params[:user_id],id:params[:id])  
-  end
+  # # GET /users/:user_id/coupons/:id
+  # def couponbyuserandid
+  #   @coupon = Coupon.find_by(user_id:params[:user_id],id:params[:id])  
+  # end
 
-  # GET /coupon_type/:coupon_type/coupons
-  def couponsbytype
-    @coupons = Coupon.where(coupon_type:params[:coupon_type])
-  end
+  # # GET /coupon_type/:coupon_type/coupons
+  # def couponsbytype
+  #   @coupons = Coupon.where(coupon_type:params[:coupon_type])
+  # end
 
-  # GET /coupon_type/:coupon_type/coupons/:id
-  def couponbytypeandid
-    @coupon = Coupon.find_by(coupon_type:params[:coupon_type],id:params[:id])
-  end
+  # # GET /coupon_type/:coupon_type/coupons/:id
+  # def couponbytypeandid
+  #   @coupon = Coupon.find_by(coupon_type:params[:coupon_type],id:params[:id])
+  # end
 
-  def
   # POST /coupons
   # POST /coupons.json
   def create
@@ -91,6 +91,6 @@ class CouponsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def coupon_params
     #  params.require(:coupon).permit(:user_id, :price, :deadline, :coupon_type)
-      params.permit(:user_id, :price, :deadline, :coupon_type)
+      params.permit(:price, :coupon_name, :status)
     end
 end

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Couponrule Cities</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Coupon</th>
+      <th>City</th>
+      <th>Start on</th>
+      <th>End on</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @couponrule_cities.each do |couponrule_city| %>
+      <tr>
+        <td><%= couponrule_city.coupon_id %></td>
+        <td><%= couponrule_city.city %></td>
+        <td><%= couponrule_city.start_on %></td>
+        <td><%= couponrule_city.end_on %></td>
+        <td><%= couponrule_city.status %></td>
+        <td><%= link_to 'Show', couponrule_city %></td>
+        <td><%= link_to 'Edit', edit_couponrule_city_path(couponrule_city) %></td>
+        <td><%= link_to 'Destroy', couponrule_city, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Couponrule City', new_couponrule_city_path %>

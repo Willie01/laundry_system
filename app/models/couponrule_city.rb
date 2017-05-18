@@ -1,0 +1,2 @@
+class CouponruleCity < ApplicationRecord
+end

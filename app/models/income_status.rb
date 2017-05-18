@@ -1,0 +1,2 @@
+class IncomeStatus < ApplicationRecord
+end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Coupons Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Status</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @coupons_users.each do |coupons_user| %>
+      <tr>
+        <td><%= coupons_user.user_id %></td>
+        <td><%= coupons_user.status %></td>
+        <td><%= link_to 'Show', coupons_user %></td>
+        <td><%= link_to 'Edit', edit_coupons_user_path(coupons_user) %></td>
+        <td><%= link_to 'Destroy', coupons_user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Coupons User', new_coupons_user_path %>

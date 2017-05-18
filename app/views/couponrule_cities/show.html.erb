@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Coupon:</strong>
+  <%= @couponrule_city.coupon_id %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @couponrule_city.city %>
+</p>
+
+<p>
+  <strong>Start on:</strong>
+  <%= @couponrule_city.start_on %>
+</p>
+
+<p>
+  <strong>End on:</strong>
+  <%= @couponrule_city.end_on %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @couponrule_city.status %>
+</p>
+
+<%= link_to 'Edit', edit_couponrule_city_path(@couponrule_city) %> |
+<%= link_to 'Back', couponrule_cities_path %>

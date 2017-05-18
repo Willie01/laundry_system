@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @categories_city.category_id %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @categories_city.city_id %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @categories_city.status %>
+</p>
+
+<%= link_to 'Edit', edit_categories_city_path(@categories_city) %> |
+<%= link_to 'Back', categories_cities_path %>
