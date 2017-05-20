@@ -179,9 +179,9 @@
 
                                     <div class="box">
                                     <div class="form-group">
-                                                <label class="control-label col-lg-1">驿站选择</label>
+                                                <label class="control-label col-lg-1">物流状态</label>
                                                 <div class="col-lg-3">
-                                                    <select id="stations_list" data-placeholder="请选择驿站" class="form-control chzn-select" tabindex="7">
+                                                    <select id="logistics_list" data-placeholder="请选择物流状态" class="form-control chzn-select" tabindex="7">
                                                         <option value="0"></option>
                                                     </select>
                                                 </div>
@@ -191,19 +191,17 @@
                                                         <option value="0"></option>
                                                     </select>
                                                 </div>
+                                                <label class="control-label col-lg-1">总金额：</label>
                                     </div>
                                         <div id="borderedTable" class="body collapse in" style="margin-top: 40px;">
                                             <table class="table table-bordered responsive-table">
                                              
                                               <thead>
                                                 <tr>
+                                                  <th>编号</th>
                                                   <th>订单项ID</th>
                                                   <th>产品名称</th>
-                                                  <th>来源驿站</th>
-                                                  <th>产品单价</th>
-                                                  <th>数量</th>
-                                                  <th>总价</th>
-                                                  <th>支付状态</th>
+                                                  <th>交易价格</th>
                                                   <th>物流状态</th>
                                                 </tr>
                                               </thead>
@@ -259,10 +257,17 @@
                 var price_type;
                 var city_id;
 
+                function getUrlParam(name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                     r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                    if (r != null) return unescape(r[2]); return null; //返回参数值
+                }
+
                 function init(){
+                    factory_id = getUrlParam('factory');
                     station_value = $("#stations_list").val();
                     product_value = $("#products_list").val();
-                    getStations();
+                    getLogistics();
                     getProducts();
                     $.get("/api/factories/1/stations/0/products/0/order_items",function(data,status){
                         showOrderItem(data,status);
@@ -290,24 +295,24 @@
                     });
                 }
 
-                function getStations(){
-                    $.get("/api/factories/1/stations",function(data,status){
-                        $.each(data,function(n,station){
-                            $("#stations_list").append("<option value=" + station.id + ">" + station.station_name + "</option>");
+                function getLogistics(){
+                    $.get("/api/logistics",function(data,status){
+                        $.each(data,function(n,logistic){
+                            $("#logistics_list").append("<option value=" + logistic.id + ">" + logistic.logistics_name + "</option>");
                         });
                     });
                 }
 
                 function getProducts(){
-                    $.get("/api/factories/1/products",function(data,status){
+                    $.get("/api/products",function(data,status){
                         $.each(data,function(n,product){
                             $("#products_list").append("<option value=" + product.id + ">" + product.product_name + "</option>");
                         });
                     });
                 }
 
-                $("#stations_list").change(function(){
-                        station_value = $("#stations_list").val();
+                $("#logistics_list").change(function(){
+                        station_value = $("#logistics_list").val();
                         product_value = $("#products_list").val();
                         $("tbody").empty();
                         $.get("/api/factories/1/stations/" + station_value + "/products/" + product_value + "/order_items",function(data,status){

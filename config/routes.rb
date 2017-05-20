@@ -388,6 +388,9 @@ Rails.application.routes.draw do
   # 显示 ’某个 物流状态' 的 '订单单项－产品‘
   get '/api/logistics/:logistics_id/items_products', to: 'items_products#itemsbylogistics', format: 'json'
 
+  # 显示 ’某个 物流状态' 的 '某个产品' 的 ‘订单单项－产品‘
+  get '/api/logistics/:logistics_id/products/:product_id/items_products', to: 'items_products#itemsbylogisticsandproduct',format:'json'
+
   # 添加 ‘某个 订单单项－产品‘
   post '/api/items_products', to: 'items_products#create', format: 'json'
 
@@ -828,7 +831,7 @@ Rails.application.routes.draw do
   get '/api/users/:user_id/user_addresses', to: 'user_addresses#addressesbyuser', format: 'json'
 
   # 显示 ‘某个用户’ 的 ‘默认地址’
-  get '/api/users/:user_id/user_addresses', to: 'user_addresses#defaultaddressbyuser', format: 'json'
+  get '/api/users/:user_id/defaultaddress', to: 'user_addresses#defaultaddressbyuser', format: 'json'
 
   # 添加 ‘某个用户地址’ 
   post '/api/user_addresses', to:'user_addresses#create', format:'json'

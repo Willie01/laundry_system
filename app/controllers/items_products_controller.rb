@@ -18,7 +18,11 @@ class ItemsProductsController < ApplicationController
   end
 
   def itemsbylogistics
-    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.product_id = ?", params[:logistics_id]]
+    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.logistics_id = ?", params[:logistics_id]]
+  end
+
+  def itemsbylogisticsandproduct
+    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.product_id = ? AND ip.logistics_id=?",params[:product_id], params[:logistics_id]]
   end
 
   # GET /items_products/new
