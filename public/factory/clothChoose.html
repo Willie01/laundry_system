@@ -56,7 +56,7 @@
 
   </head>
 
-        <body class="bg-dark dk">
+        <body class="bg-dark dk" onload="init()">
             <div class="bg-dark dk" id="wrap">
                 <div id="top" >
                     <!-- .navbar -->
@@ -124,12 +124,12 @@
                                   
                                   <li class="nav-divider"></li>
                                   <li >
-                                    <a href="index.html">
+                                    <a name="order">
                                       <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;订单管理</span>
                                     </a>
                                   </li>
                                   <li >
-                                    <a href="income.html">
+                                    <a name="income">
                                       <i class="fa fa-columns"></i>
                                       <span class="link-title">
                             收入明细
@@ -137,7 +137,7 @@
                                     </a>
                                   </li>
                                   <li class="bg-dark">
-                                    <a href="clothChoose.html">
+                                    <a name="clothChoose">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             衣物分拣
@@ -145,7 +145,7 @@
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="ad.html">
+                                    <a name="ad">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             公告推送
@@ -153,7 +153,7 @@
                                     </a>
                                   </li>
                                   <li >
-                                    <a href="mine.html">
+                                    <a name="mine">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             账号信息
@@ -174,191 +174,48 @@
                             <div class="row">
 
                                 <!-- .col-lg-12 -->
-                                <div class="form-group" >
-                                            <label class="control-label col-lg-1" style="width: 9%;height: 34px;line-height: 34px;">城市</label>
-                                            <div class="col-lg-2" style="margin-top: 4px;">
-                                                <select data-placeholder="Your Favorite Type of Bear" class="form-control chzn-select" tabindex="7">
-                                                    <option value=""></option>
-                                                    <option selected>北京</option>
-                                                    <option>上海</option>
-                                                    <option>广州</option>
-                                                    <option>深圳</option>
-                                                    <option>杭州</option>
-                                                    <option disabled>南京</option>
-                                                    <option>大连</option>
-                                                </select>
-                                            </div>
-                                            <label class="control-label col-lg-1" style="width: 9%;height: 34px;line-height: 34px;margin-left:30px;">驿站选择</label>
-                                            <div class="col-lg-2" style="margin-top: 4px;">
-                                                <select data-placeholder="Your Favorite Type of Bear" class="form-control chzn-select" tabindex="7">
-                                                    <option value=""></option>
-                                                    <option>海淀区西直门</option>
-                                                    <option>海淀区大望路</option>
-                                                    <option>昌平区</option>
-                                                    <option>东城区</option>
-                                                    <option selected>朝阳区</option>
-                                                    <option disabled>西城区</option>
-                                                    <option>大连</option>
-                                                </select>
-                                            </div>
-                                            <label class="control-label col-lg-1" style="width: 9%;height: 34px;line-height: 34px;margin-left:30px;">商品种类</label>
-                                            <div class="col-lg-2" style="margin-top: 4px;">
-                                                <select data-placeholder="Your Favorite Type of Bear" class="form-control chzn-select" tabindex="7">
-                                                    <option value=""></option>
-                                                    <option>衣服</option>
-                                                    <option>鞋子</option>
-                                                    <option>床单</option>
-                                                    <option>被罩</option>
-                                                    <option selected>枕巾</option>
-                                                    <option disabled>毛巾</option>
-                                                    <option>窗帘</option>
-                                                </select>
-                                            </div>
-                                           
-                                            <button style="margin-top:10px;">批量分拣</button>
-                                           
-                                </div>
-                               
+                                
                                 <div class="col-lg-12">
 
-                                    
-                                    
+                                    <div class="box">
+                                    <div class="form-group">
+                                                <label class="control-label col-lg-1">物流状态</label>
+                                                <div class="col-lg-3">
+                                                    <select id="logistics_list" data-placeholder="请选择物流状态" class="form-control chzn-select" tabindex="7">
+                                                        <option value="0"></option>
+                                                        <option value="40">工厂（待分拣）</option>
+                                                        <option value="42">已分拣（待洗涤）</option>
+                                                    </select>
+                                                </div>
+                                                <label class="control-label col-lg-1">产品选择</label>
+                                                <div class="col-lg-3">
+                                                    <select id="products_list" data-placeholder="请选择产品" class="form-control chzn-select" tabindex="7">
+                                                        <option value="0"></option>
+                                                    </select>
+                                                </div>
+                                               
+                                    </div>
                                         <div id="borderedTable" class="body collapse in" style="margin-top: 40px;">
                                             <table class="table table-bordered responsive-table">
-                                                <thead>
-                                                    <tr>
-                                                        <th>#</th>
-                                                        <th>订单号</th>
-                                                        <th>订单时间</th>
-                                                        <th>用户名</th>
-                                                        <th>商品种类</th>
+                                             
+                                              <thead>
+                                                <tr>
+                                                  <th>编号</th>
+                                                  <th>订单项ID</th>
+                                                  <th>产品名称</th>
+                                                  <th>交易价格</th>
+                                                  <th>物流状态</th>
+                                                  <th>操作</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
 
-                                                        <th>操作</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <th>1</th>
-                                                        <th>001</th>
-                                                        <th>2017-04-02</th>
-                                                        <th>lucy</th>
-                                                        <th>
-                                                            <div class="col-lg-6" >
-                                                                <select data-placeholder="Your Favorite Type of Bear" class="form-control chzn-select" tabindex="7">
-                                                                    <option value=""></option>
-                                                                    <option>衣服</option>
-                                                                    <option>鞋子</option>
-                                                                    <option>床单</option>
-                                                                    <option>被罩</option>
-                                                                    <option selected>枕巾</option>
-                                                                    <option disabled>毛巾</option>
-                                                                    <option>窗帘</option>
-                                                                </select>
-                                                            </div>
-                                                            
-
-                                                        </th>
-                                                        <th><button>分拣</button></th>
-                                                        
-                                                    </tr>
-                                                    <tr>
-                                                        <th>2</th>
-                                                        <th>001</th>
-                                                        <th>2017-04-02</th>
-                                                        <th>小张</th>
-                                                        <th>
-                                                            <div class="col-lg-6" >
-                                                                <select data-placeholder="Your Favorite Type of Bear" class="form-control chzn-select" tabindex="7">
-                                                                    <option value=""></option>
-                                                                    <option>衣服</option>
-                                                                    <option>鞋子</option>
-                                                                    <option>床单</option>
-                                                                    <option>被罩</option>
-                                                                    <option selected>枕巾</option>
-                                                                    <option disabled>毛巾</option>
-                                                                    <option>窗帘</option>
-                                                                </select>
-                                                            </div>
-                                                        </th>
-                                                        <th><button>分拣</button></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>3</th>
-                                                        <th>001</th>
-                                                        <th>2017-04-02</th>
-                                                        <th>小张</th>
-                                                        <th>
-                                                            <div class="col-lg-6" >
-                                                                <select data-placeholder="Your Favorite Type of Bear" class="form-control chzn-select" tabindex="7">
-                                                                    <option value=""></option>
-                                                                    <option>衣服</option>
-                                                                    <option>鞋子</option>
-                                                                    <option>床单</option>
-                                                                    <option>被罩</option>
-                                                                    <option selected>枕巾</option>
-                                                                    <option disabled>毛巾</option>
-                                                                    <option>窗帘</option>
-                                                                </select>
-                                                            </div>
-                                                        </th>
-                                                        <th><button>分拣</button></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>4</th>
-                                                        <th>001</th>
-                                                        <th>2017-04-02</th>
-                                                        <th>小王</th>
-                                                        <th>
-                                                            <div class="col-lg-6" >
-                                                                <select data-placeholder="Your Favorite Type of Bear" class="form-control chzn-select" tabindex="7">
-                                                                    <option value=""></option>
-                                                                    <option>衣服</option>
-                                                                    <option>鞋子</option>
-                                                                    <option>床单</option>
-                                                                    <option>被罩</option>
-                                                                    <option selected>枕巾</option>
-                                                                    <option disabled>毛巾</option>
-                                                                    <option>窗帘</option>
-                                                                </select>
-                                                            </div>
-                                                        </th>
-                                                        <th><button>分拣</button></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>5</th>
-                                                        <th>001</th>
-                                                        <th>2017-04-02</th>
-                                                        <th>小王</th>
-                                                        <th>
-                                                            <div class="col-lg-6" >
-                                                                <select data-placeholder="Your Favorite Type of Bear" class="form-control chzn-select" tabindex="7">
-                                                                    <option value=""></option>
-                                                                    <option>衣服</option>
-                                                                    <option>鞋子</option>
-                                                                    <option>床单</option>
-                                                                    <option>被罩</option>
-                                                                    <option selected>枕巾</option>
-                                                                    <option disabled>毛巾</option>
-                                                                    <option>窗帘</option>
-                                                                </select>
-                                                            </div>
-                                                        </th>
-                                                        <th><button>分拣</button></th>
-                                                    </tr>
-                                                </tbody>                
-                                                </table>
-                                                <ul class="pagination" style="display:flex;justify-content:center; ">
-                                                    <li><a href="#">&laquo;</a></li>
-                                                    <li class="active"><a href="#">1</a></li>
-                                                    <li class="disabled"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#">&raquo;</a></li>
-                                                </ul>
+                                              </tbody>
+                                            </table>
                                                
                                         </div>
-                                   
+                                    </div>
+                                    
                                 </div>
                                 <!-- /.col-lg-12 -->
                             </div>
@@ -371,99 +228,13 @@
                 </div>
                 <!-- /#content -->
 
-                    <div id="right" class="onoffcanvas is-right is-fixed bg-light" aria-expanded=false>
-                        <a class="onoffcanvas-toggler" href="#right" data-toggle=onoffcanvas aria-expanded=false></a>
-                        <br>
-                        <br>
-                        <div class="alert alert-danger">
-                            <button type="button" class="close" data-dismiss="alert">&times;</button>
-                            <strong>Warning!</strong> Best check yo self, you're not looking too good.
-                        </div>
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <ul class="list-unstyled">
-                                <li>Visitor <span class="inlinesparkline pull-right">1,4,4,7,5,9,10</span></li>
-                                <li>Online Visitor <span class="dynamicsparkline pull-right">Loading..</span></li>
-                                <li>Popularity <span class="dynamicbar pull-right">Loading..</span></li>
-                                <li>New Users <span class="inlinebar pull-right">1,3,4,5,3,5</span></li>
-                            </ul>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <button class="btn btn-block">Default</button>
-                            <button class="btn btn-primary btn-block">Primary</button>
-                            <button class="btn btn-info btn-block">Info</button>
-                            <button class="btn btn-success btn-block">Success</button>
-                            <button class="btn btn-danger btn-block">Danger</button>
-                            <button class="btn btn-warning btn-block">Warning</button>
-                            <button class="btn btn-inverse btn-block">Inverse</button>
-                            <button class="btn btn-metis-1 btn-block">btn-metis-1</button>
-                            <button class="btn btn-metis-2 btn-block">btn-metis-2</button>
-                            <button class="btn btn-metis-3 btn-block">btn-metis-3</button>
-                            <button class="btn btn-metis-4 btn-block">btn-metis-4</button>
-                            <button class="btn btn-metis-5 btn-block">btn-metis-5</button>
-                            <button class="btn btn-metis-6 btn-block">btn-metis-6</button>
-                        </div>
-                        <!-- /.well well-small -->
-                        <!-- .well well-small -->
-                        <div class="well well-small dark">
-                            <span>Default</span><span class="pull-right"><small>20%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-info" style="width: 20%"></div>
-                            </div>
-                            <span>Success</span><span class="pull-right"><small>40%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-success" style="width: 40%"></div>
-                            </div>
-                            <span>warning</span><span class="pull-right"><small>60%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
-                            </div>
-                            <span>Danger</span><span class="pull-right"><small>80%</small></span>
-                        
-                            <div class="progress xs">
-                                <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /#right -->
             </div>
             <!-- /#wrap -->
             <footer class="Footer bg-dark dker">
                 <p>2017 &copy; 焕然衣新小分队</p>
             </footer>
             <!-- /#footer -->
-            <!-- #helpModal -->
-            <div id="helpModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Modal title</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-            <!-- /#helpModal -->
+
             <!--jQuery -->
             <script src="assets/lib/jquery/jquery.js"></script>
 
@@ -482,7 +253,100 @@
             <script src="assets/js/core.js"></script>
             <!-- Metis demo scripts -->
             <script src="assets/js/app.js"></script>
+            <script type="text/javascript">
+                var factory_id;
+                var station_value;
+                var product_value;
+                var logistics_id;
+                var price_type;
+                var city_id;
 
+                function getUrlParam(name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                     r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                    if (r != null) return unescape(r[2]); return null; //返回参数值
+                }
+
+                function init(){
+                    factory_id = getUrlParam('factory');
+                    logistics_value = $("#logistics_list").val();
+                    product_value = $("#products_list").val();
+                    getProducts();
+                    $.get("/api/factories/"+factory_id+"/logistics/0/products/0/items_products",function(data,status){
+                        showOrderItem(data,status);
+                    });
+                };
+
+                  // $(document).ready(function()){
+                    $("a[name='order']").click(function(){
+                        window.location.href = "index.html?factory=" + factory_id;
+                    });
+                
+                    $("a[name='income']").click(function(){
+                        window.location.href = "income.html?factory=" + factory_id;
+                    });
+                    $("a[name='ad']").click(function(){
+                        window.location.href = "ad.html?factory=" + factory_id;
+                    });
+                    $("a[name='clothChoose']").click(function(){
+                        window.location.href = "clothChoose.html?factory=" + factory_id;
+                    });
+                    $("a[name='mine']").click(function(){
+                        window.location.href = "mine.html?factory=" + factory_id;
+                    });
+                // }
+
+
+                function showOrderItem(data,status){
+                    var item_income;
+                    var item_paystatus;
+                    $.each(data,function(n,orderItem){
+                        if(orderItem.logistics_id == 40){
+                         $("tbody").append("<tr><th>" + orderItem.id + "</th><th>" + orderItem.order_id + "</th><th>" + orderItem.product_name + "</th><th>" + orderItem.item_price + "</th><th>" + orderItem.logistics_name + "</th><th><button id='item" + orderItem.id + "'>分拣</button></th></tr>");
+                         $("#item"+orderItem.id).click(function(){
+                            $.post("/api/update/items_products/"+orderItem.id,{logistics_id: 42},function(){
+                                $("tbody").empty();
+                            $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
+                                showOrderItem(data,status);
+                                });
+                            });
+                            
+                         });
+                        }
+                        if(orderItem.logistics_id == 42){
+                         $("tbody").append("<tr><th>" + orderItem.id + "</th><th>" + orderItem.order_id + "</th><th>" + orderItem.product_name + "</th><th>" + orderItem.item_price + "</th><th>" + orderItem.logistics_name + "</th><th>已分拣</th></tr>");
+                        }
+                    });
+                    
+                }
+
+
+                function getProducts(){
+                    $.get("/api/products",function(data,status){
+                        $.each(data,function(n,product){
+                            $("#products_list").append("<option value=" + product.id + ">" + product.product_name + "</option>");
+                        });
+                    });
+                }
+
+                $("#logistics_list").change(function(){
+                        logistics_value = $("#logistics_list").val();
+                        product_value = $("#products_list").val();
+                        $("tbody").empty();
+                        $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
+                            showOrderItem(data,status);
+                        });
+                });
+                $("#products_list").change(function(){
+                        logistics_value = $("#logistics_list").val();
+                        product_value = $("#products_list").val();
+                        $("tbody").empty();
+                        $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
+                            showOrderItem(data,status);
+                        });
+                });
+
+            </script>
 
 <!--             <script src="assets/js/style-switcher.js"></script> -->
         </body>

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
 
+
+  put '/api/users/:user_id/pay/:pay', to: 'user_pays#balanceupdate', format:'json'
+  resources :user_pays
   # 上面的覆盖下面
   # 前缀域名地址：wwww.tchautchau.cn
   # 接口示例： www.tchautchau.cn/api/users 即可返回所有用户的json数据
@@ -49,8 +52,8 @@ Rails.application.routes.draw do
   post '/api/update/categories_cities/:id' ,to: 'categories_cities#update', format: 'json'
 
   # 删除 ‘某个 品类－城市‘
-  delete '/api/categories_cities/:id' ,to: 'categories_cities#delete', format: 'json'
-  post '/api/delete/categories_cities/:id' ,to: 'categories_cities#delete', format: 'json'
+  delete '/api/categories_cities/:id' ,to: 'categories_cities#destroy', format: 'json'
+  post '/api/delete/categories_cities/:id' ,to: 'categories_cities#destroy', format: 'json'
   resources :categories_cities
 
 
@@ -89,8 +92,8 @@ Rails.application.routes.draw do
   post '/api/update/cities/:id' ,to: 'cities#update', format: 'json'
 
   # 删除 ‘某个城市’
-  delete '/api/cities/:id' ,to: 'cities#delete', format: 'json'
-  post '/api/delete/cities/:id' ,to: 'cities#delete', format: 'json'
+  delete '/api/cities/:id' ,to: 'cities#destroy', format: 'json'
+  post '/api/delete/cities/:id' ,to: 'cities#destroy', format: 'json'
   resources :cities
 
 
@@ -112,8 +115,8 @@ Rails.application.routes.draw do
   post '/api/update/coupon_cities/:id' ,to: 'coupon_cities#update', format: 'json'
 
   # 删除 ‘某个 优惠券－城市’
-  delete '/api/coupon_cities/:id' ,to: 'coupon_cities#delete', format: 'json'
-  post '/api/delete/coupon_cities/:id' ,to: 'coupon_cities#delete', format: 'json'
+  delete '/api/coupon_cities/:id' ,to: 'coupon_cities#destroy', format: 'json'
+  post '/api/delete/coupon_cities/:id' ,to: 'coupon_cities#destroy', format: 'json'
   resources :coupon_cities
 
 
@@ -135,8 +138,8 @@ Rails.application.routes.draw do
   post '/api/update/coupon_coupontypes/:id' ,to: 'coupon_coupontypes#update', format: 'json'
 
   # 删除 ‘某个 优惠券－优惠券类型’
-  delete '/api/coupon_coupontypes/:id' ,to: 'coupon_coupontypes#delete', format: 'json'
-  post '/api/delete/coupon_coupontypes/:id' ,to: 'coupon_coupontypes#delete', format: 'json'
+  delete '/api/coupon_coupontypes/:id' ,to: 'coupon_coupontypes#destroy', format: 'json'
+  post '/api/delete/coupon_coupontypes/:id' ,to: 'coupon_coupontypes#destroy', format: 'json'
   resources :coupon_coupontypes
 
 
@@ -155,8 +158,8 @@ Rails.application.routes.draw do
   post '/api/update/coupon_statuses/:id' ,to: 'coupon_statuses#update', format: 'json'
 
   # 删除 ‘某个 优惠券类型‘
-  delete '/api/coupon_statuses/:id' ,to: 'coupon_statuses#delete', format: 'json'
-  post '/api/delete/coupon_statuses/:id' ,to: 'coupon_statuses#delete', format: 'json'
+  delete '/api/coupon_statuses/:id' ,to: 'coupon_statuses#destroy', format: 'json'
+  post '/api/delete/coupon_statuses/:id' ,to: 'coupon_statuses#destroy', format: 'json'
   resources :coupon_statuses
 
 
@@ -175,8 +178,8 @@ Rails.application.routes.draw do
   post '/api/update/coupon_types/:id' ,to: 'coupon_types#update', format: 'json'
 
   # 删除 ‘某个 优惠券类型‘
-  delete '/api/coupon_types/:id' ,to: 'coupon_types#delete', format: 'json'
-  post '/api/delete/coupon_types/:id' ,to: 'coupon_types#delete', format: 'json'
+  delete '/api/coupon_types/:id' ,to: 'coupon_types#destroy', format: 'json'
+  post '/api/delete/coupon_types/:id' ,to: 'coupon_types#destroy', format: 'json'
   resources :coupon_types
 
 
@@ -198,8 +201,8 @@ Rails.application.routes.draw do
   post '/api/update/couponrule_cities/:id' ,to: 'couponrule_cities#update', format: 'json'
 
   # 删除 ‘某个 优惠券规则－城市‘
-  delete '/api/couponrule_cities/:id' ,to: 'couponrule_cities#delete', format: 'json'
-  post '/api/delete/couponrule_cities/:id' ,to: 'couponrule_cities#delete', format: 'json'
+  delete '/api/couponrule_cities/:id' ,to: 'couponrule_cities#destroy', format: 'json'
+  post '/api/delete/couponrule_cities/:id' ,to: 'couponrule_cities#destroy', format: 'json'
   resources :couponrule_cities
 
 
@@ -218,8 +221,8 @@ Rails.application.routes.draw do
   post '/api/update/coupons/:id' ,to: 'coupons#update', format: 'json'
 
   # 删除 ‘某个优惠券’
-  delete '/api/coupons/:id' ,to: 'coupons#delete', format: 'json'
-  post '/api/delete/coupons/:id' ,to: 'coupons#delete', format: 'json'
+  delete '/api/coupons/:id' ,to: 'coupons#destroy', format: 'json'
+  post '/api/delete/coupons/:id' ,to: 'coupons#destroy', format: 'json'
   resources :coupons
 
 
@@ -241,8 +244,8 @@ Rails.application.routes.draw do
   post '/api/update/coupons_users/:id' ,to: 'coupons_users#update', format: 'json'
 
   # 删除 ‘某个 优惠券－用户‘
-  delete '/api/coupons_users/:id' ,to: 'coupons_users#delete', format: 'json'
-  post '/api/delete/coupons_users/:id' ,to: 'coupons_users#delete', format: 'json'
+  delete '/api/coupons_users/:id' ,to: 'coupons_users#destroy', format: 'json'
+  post '/api/delete/coupons_users/:id' ,to: 'coupons_users#destroy', format: 'json'
   resources :coupons_users
 
 
@@ -264,8 +267,8 @@ Rails.application.routes.draw do
   post '/api/update/courier_cities/:id' ,to: 'courier_cities#update', format: 'json'
 
   # 删除 ‘某个 取送员－城市‘
-  delete '/api/courier_cities/:id' ,to: 'courier_cities#delete', format: 'json'
-  post '/api/delete/courier_cities/:id' ,to: 'courier_cities#delete', format: 'json'
+  delete '/api/courier_cities/:id' ,to: 'courier_cities#destroy', format: 'json'
+  post '/api/delete/courier_cities/:id' ,to: 'courier_cities#destroy', format: 'json'
   resources :courier_cities
 
 
@@ -287,8 +290,8 @@ Rails.application.routes.draw do
   post '/api/update/courier_stations/:id' ,to: 'courier_stations#update', format: 'json'
 
   # 删除 ‘某个 取送员－驿站‘
-  delete '/api/courier_stations/:id' ,to: 'courier_stations#delete', format: 'json'
-  post '/api/delete/courier_stations/:id' ,to: 'courier_stations#delete', format: 'json'
+  delete '/api/courier_stations/:id' ,to: 'courier_stations#destroy', format: 'json'
+  post '/api/delete/courier_stations/:id' ,to: 'courier_stations#destroy', format: 'json'
   resources :courier_stations
 
 
@@ -307,8 +310,8 @@ Rails.application.routes.draw do
   post '/api/update/couriers/:id' ,to: 'couriers#update', format: 'json'
 
   # 删除 ‘某个取送员’
-  delete '/api/couriers/:id' ,to: 'couriers#delete', format: 'json'
-  post '/api/delete/couriers/:id' ,to: 'couriers#delete', format: 'json'
+  delete '/api/couriers/:id' ,to: 'couriers#destroy', format: 'json'
+  post '/api/delete/couriers/:id' ,to: 'couriers#destroy', format: 'json'
   resources :couriers
 
 
@@ -327,8 +330,8 @@ Rails.application.routes.draw do
   post '/api/update/factories/:id' ,to: 'factories#update', format: 'json'
 
   # 删除 ‘某个加工端’
-  delete '/api/factories/:id' ,to: 'factories#delete', format: 'json'
-  post '/api/delete/factories/:id' ,to: 'factories#delete', format: 'json'
+  delete '/api/factories/:id' ,to: 'factories#destroy', format: 'json'
+  post '/api/delete/factories/:id' ,to: 'factories#destroy', format: 'json'
   resources :factories
 
 
@@ -350,8 +353,8 @@ Rails.application.routes.draw do
   post '/api/update/factory_cities/:id' ,to: 'factory_cities#update', format: 'json'
 
   # 删除 ‘某个 加工端－城市’
-  delete '/api/factory_cities/:id' ,to: 'factory_cities#delete', format: 'json'
-  post '/api/delete/factory_cities/:id' ,to: 'factory_cities#delete', format: 'json'
+  delete '/api/factory_cities/:id' ,to: 'factory_cities#destroy', format: 'json'
+  post '/api/delete/factory_cities/:id' ,to: 'factory_cities#destroy', format: 'json'
   resources :factory_cities
 
 
@@ -370,8 +373,8 @@ Rails.application.routes.draw do
   post '/api/update/income_statuses/:id' ,to: 'income_statuses#update', format: 'json'
 
   # 删除 ‘某个 收入状态’
-  delete '/api/income_statuses/:id' ,to: 'income_statuses#delete', format: 'json'
-  post '/api/delete/income_statuses/:id' ,to: 'income_statuses#delete', format: 'json'
+  delete '/api/income_statuses/:id' ,to: 'income_statuses#destroy', format: 'json'
+  post '/api/delete/income_statuses/:id' ,to: 'income_statuses#destroy', format: 'json'
   resources :income_statuses
 
 
@@ -391,6 +394,9 @@ Rails.application.routes.draw do
   # 显示 ’某个 物流状态' 的 '某个产品' 的 ‘订单单项－产品‘
   get '/api/logistics/:logistics_id/products/:product_id/items_products', to: 'items_products#itemsbylogisticsandproduct',format:'json'
 
+  # 显示 '某个工厂' 的 ’某个 物流状态' 的 '某个产品' 的 ‘订单单项－产品‘
+  get '/api/factories/:factory_id/logistics/:logistics_id/products/:product_id/items_products', to: 'items_products#itemsbyfactoryandlogisticsandproduct',format:'json'
+
   # 添加 ‘某个 订单单项－产品‘
   post '/api/items_products', to: 'items_products#create', format: 'json'
 
@@ -399,8 +405,8 @@ Rails.application.routes.draw do
   post '/api/update/items_products/:id' ,to: 'items_products#update', format: 'json'
 
   # 删除 ‘某个 订单单项－产品‘
-  delete '/api/items_products/:id' ,to: 'items_products#delete', format: 'json'
-  post '/api/delete/items_products/:id' ,to: 'items_products#delete', format: 'json'
+  delete '/api/items_products/:id' ,to: 'items_products#destroy', format: 'json'
+  post '/api/delete/items_products/:id' ,to: 'items_products#destroy', format: 'json'
   resources :items_products
 
 
@@ -419,8 +425,8 @@ Rails.application.routes.draw do
   post '/api/update/logistics/:id' ,to: 'logistics#update', format: 'json'
 
   # 删除 ‘某个物流’
-  delete '/api/logistics/:id' ,to: 'logistics#delete', format: 'json'
-  post '/api/delete/logistics/:id' ,to: 'logistics#delete', format: 'json'
+  delete '/api/logistics/:id' ,to: 'logistics#destroy', format: 'json'
+  post '/api/delete/logistics/:id' ,to: 'logistics#destroy', format: 'json'
   resources :logistics
 
 
@@ -439,8 +445,8 @@ Rails.application.routes.draw do
   post '/api/update/operator_permissions/:id' ,to: 'operator_permissions#update', format: 'json'
 
   # 删除 ‘某个 运营人员－权限’
-  delete '/api/operator_permissions/:id' ,to: 'operator_permissions#delete', format: 'json'
-  post '/api/delete/operator_permissions/:id' ,to: 'operator_permissions#delete', format: 'json'
+  delete '/api/operator_permissions/:id' ,to: 'operator_permissions#destroy', format: 'json'
+  post '/api/delete/operator_permissions/:id' ,to: 'operator_permissions#destroy', format: 'json'
   resources :operator_permissions
 
   
@@ -459,8 +465,8 @@ Rails.application.routes.draw do
   post '/api/update/operators/:id' ,to: 'operators#update', format: 'json'
 
   # 删除 ‘某个运营人员’
-  delete '/api/operators/:id' ,to: 'operators#delete', format: 'json'
-  post '/api/delete/operators/:id' ,to: 'operators#delete', format: 'json'
+  delete '/api/operators/:id' ,to: 'operators#destroy', format: 'json'
+  post '/api/delete/operators/:id' ,to: 'operators#destroy', format: 'json'
   resources :operators
 
 
@@ -540,8 +546,8 @@ Rails.application.routes.draw do
   post '/api/update/pay_statuses/:id' ,to: 'pay_statuses#update', format: 'json'
 
   # 删除 ‘某个 支付状态‘
-  delete '/api/pay_statuses/:id' ,to: 'pay_statuses#delete', format: 'json'
-  post '/api/delete/pay_statuses/:id' ,to: 'pay_statuses#delete', format: 'json'
+  delete '/api/pay_statuses/:id' ,to: 'pay_statuses#destroy', format: 'json'
+  post '/api/delete/pay_statuses/:id' ,to: 'pay_statuses#destroy', format: 'json'
   resources :pay_statuses
 
 
@@ -560,8 +566,8 @@ Rails.application.routes.draw do
   post '/api/update/permissions/:id' ,to: 'permissions#update', format: 'json'
 
   # 删除 ‘某个 权限’
-  delete '/api/permissions/:id' ,to: 'permissions#delete', format: 'json'
-  post '/api/delete/permissions/:id' ,to: 'permissions#delete', format: 'json'
+  delete '/api/permissions/:id' ,to: 'permissions#destroy', format: 'json'
+  post '/api/delete/permissions/:id' ,to: 'permissions#destroy', format: 'json'
   resources :permissions
 
 
@@ -580,8 +586,8 @@ Rails.application.routes.draw do
   post '/api/update/portraits/:id' ,to: 'portraits#update', format: 'json'
 
   # 删除 ‘某个 头像’
-  delete '/api/portraits/:id' ,to: 'portraits#delete', format: 'json'
-  post '/api/delete/portraits/:id' ,to: 'portraits#delete', format: 'json'
+  delete '/api/portraits/:id' ,to: 'portraits#destroy', format: 'json'
+  post '/api/delete/portraits/:id' ,to: 'portraits#destroy', format: 'json'
   resources :portraits
 
 
@@ -603,8 +609,8 @@ Rails.application.routes.draw do
   post '/api/update/price_rules/:id' ,to: 'price_rules#update', format: 'json'
 
   # 删除 ‘某个 价格规则’
-  delete '/api/price_rules/:id' ,to: 'price_rules#delete', format: 'json'
-  post '/api/delete/price_rules/:id' ,to: 'price_rules#delete', format: 'json'
+  delete '/api/price_rules/:id' ,to: 'price_rules#destroy', format: 'json'
+  post '/api/delete/price_rules/:id' ,to: 'price_rules#destroy', format: 'json'
   resources :price_rules
 
 
@@ -623,8 +629,8 @@ Rails.application.routes.draw do
   post '/api/update/price_types/:id' ,to: 'price_types#update', format: 'json'
 
   # 删除 ‘某个 价格类型’
-  delete '/api/price_types/:id' ,to: 'price_types#delete', format: 'json'
-  post '/api/delete/price_types/:id' ,to: 'price_types#delete', format: 'json'
+  delete '/api/price_types/:id' ,to: 'price_types#destroy', format: 'json'
+  post '/api/delete/price_types/:id' ,to: 'price_types#destroy', format: 'json'
   resources :price_types
 
 
@@ -646,8 +652,8 @@ Rails.application.routes.draw do
   post '/api/update/product_categories/:id' ,to: 'product_categories#update', format: 'json'
 
   # 删除 ‘某个 产品－品类’
-  delete '/api/product_categories/:id' ,to: 'product_categories#delete', format: 'json'
-  post '/api/delete/product_categories/:id' ,to: 'product_categories#delete', format: 'json'
+  delete '/api/product_categories/:id' ,to: 'product_categories#destroy', format: 'json'
+  post '/api/delete/product_categories/:id' ,to: 'product_categories#destroy', format: 'json'
   resources :product_categories
 
 
@@ -669,8 +675,8 @@ Rails.application.routes.draw do
   post '/api/update/products_cities/:id' ,to: 'products_cities#update', format: 'json'
 
   # 删除 ‘某个 产品－城市’
-  delete '/api/products_cities/:id' ,to: 'products_cities#delete', format: 'json'
-  post '/api/delete/products_cities/:id' ,to: 'products_cities#delete', format: 'json'
+  delete '/api/products_cities/:id' ,to: 'products_cities#destroy', format: 'json'
+  post '/api/delete/products_cities/:id' ,to: 'products_cities#destroy', format: 'json'
   resources :products_cities
 
 
@@ -729,8 +735,8 @@ Rails.application.routes.draw do
   post '/api/update/regions/:id' ,to: 'regions#update', format: 'json'
 
   # 删除 ‘某个区域’
-  delete '/api/regions/:id' ,to: 'regions#delete', format: 'json'
-  post '/api/delete/regions/:id' ,to: 'regions#delete', format: 'json'
+  delete '/api/regions/:id' ,to: 'regions#destroy', format: 'json'
+  post '/api/delete/regions/:id' ,to: 'regions#destroy', format: 'json'
   resources :regions
 
 
@@ -752,8 +758,8 @@ Rails.application.routes.draw do
   post '/api/update/station_cities/:id' ,to: 'station_cities#update', format: 'json'
 
   # 删除 ‘某个 驿站－城市
-  delete '/api/station_cities/:id' ,to: 'station_cities#delete', format: 'json'
-  post '/api/delete/station_cities/:id' ,to: 'station_cities#delete', format: 'json'
+  delete '/api/station_cities/:id' ,to: 'station_cities#destroy', format: 'json'
+  post '/api/delete/station_cities/:id' ,to: 'station_cities#destroy', format: 'json'
   resources :station_cities
 
 
@@ -775,8 +781,8 @@ Rails.application.routes.draw do
   post '/api/update/station_factories/:id' ,to: 'station_factories#update', format: 'json'
 
   # 删除 ‘某个 驿站－工厂’
-  delete '/api/station_factories/:id' ,to: 'station_factories#delete', format: 'json'
-  post '/api/delete/station_factories/:id' ,to: 'station_factories#delete', format: 'json'
+  delete '/api/station_factories/:id' ,to: 'station_factories#destroy', format: 'json'
+  post '/api/delete/station_factories/:id' ,to: 'station_factories#destroy', format: 'json'
   resources :station_factories
 
 
@@ -795,8 +801,8 @@ Rails.application.routes.draw do
   post '/api/stations/stations/:id' ,to: 'stations#update', format: 'json'
 
   # 删除 ‘某个驿站’
-  delete '/api/stations/:id' ,to: 'stations#delete', format: 'json'
-  post '/api/delete/stations/:id' ,to: 'stations#delete', format: 'json'
+  delete '/api/stations/:id' ,to: 'stations#destroy', format: 'json'
+  post '/api/delete/stations/:id' ,to: 'stations#destroy', format: 'json'
   resources :stations
 
 
@@ -815,8 +821,8 @@ Rails.application.routes.draw do
   post '/api/update/statuses/:id' ,to: 'statuses#update', format: 'json'
 
   # 删除 ‘某个 账号状态‘
-  delete '/api/statuses/:id' ,to: 'statuses#delete', format: 'json'
-  post '/api/delete/statuses/:id' ,to: 'statuses#delete', format: 'json'
+  delete '/api/statuses/:id' ,to: 'statuses#destroy', format: 'json'
+  post '/api/delete/statuses/:id' ,to: 'statuses#destroy', format: 'json'
   resources :statuses
 
 
@@ -864,8 +870,8 @@ Rails.application.routes.draw do
   post '/api/update/user_cities/:id' ,to: 'user_cities#update', format: 'json'
 
   # 删除 ‘某个 用户－城市‘
-  delete '/api/user_cities/:id' ,to: 'user_cities#delete', format: 'json'
-  post '/api/delete/user_cities/:id' ,to: 'user_cities#delete', format: 'json'
+  delete '/api/user_cities/:id' ,to: 'user_cities#destroy', format: 'json'
+  post '/api/delete/user_cities/:id' ,to: 'user_cities#destroy', format: 'json'
   resources :user_cities
 
 
@@ -887,8 +893,8 @@ Rails.application.routes.draw do
   post '/api/update/user_portraits/:id' ,to: 'user_portraits#update', format: 'json'
 
   # 删除 ‘某个 用户－头像’
-  delete '/api/user_portraits/:id' ,to: 'user_portraits#delete', format: 'json'
-  post '/api/delete/user_portraits/:id' ,to: 'user_portraits#delete', format: 'json'
+  delete '/api/user_portraits/:id' ,to: 'user_portraits#destroy', format: 'json'
+  post '/api/delete/user_portraits/:id' ,to: 'user_portraits#destroy', format: 'json'
   resources :user_portraits
 
 

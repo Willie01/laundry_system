@@ -21,10 +21,6 @@ class StationsController < ApplicationController
   def edit
   end
 
-  # GET /factories/:factory_id/stations
-  def stationsbyfactory
-    @stations = Station.where(factory_id: params[:factory_id])
-  end
   # POST /stations
   # POST /stations.json
   def create

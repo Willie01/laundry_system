@@ -124,12 +124,12 @@
                                   
                                   <li class="nav-divider"></li>
                                   <li >
-                                    <a href="index.html">
+                                    <a name="order">
                                       <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;订单管理</span>
                                     </a>
                                   </li>
                                   <li class="bg-dark">
-                                    <a href="income.html">
+                                     <a name="income" >
                                       <i class="fa fa-columns"></i>
                                       <span class="link-title">
                             收入明细
@@ -137,7 +137,7 @@
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="clothChoose.html">
+                                    <a name="clothChoose">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             衣物分拣
@@ -145,7 +145,7 @@
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="ad.html">
+                                    <a name="ad">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             公告推送
@@ -153,7 +153,7 @@
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="mine.html">
+                                    <a name="mine">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             我的资料
@@ -192,6 +192,7 @@
                                                     </select>
                                                 </div>
                                                 <label class="control-label col-lg-1">总金额：</label>
+                                                <label id = "sum"></label>
                                     </div>
                                         <div id="borderedTable" class="body collapse in" style="margin-top: 40px;">
                                             <table class="table table-bordered responsive-table">
@@ -256,6 +257,7 @@
                 var logistics_id;
                 var price_type;
                 var city_id;
+                var sum;
 
                 function getUrlParam(name) {
                     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
@@ -264,35 +266,45 @@
                 }
 
                 function init(){
+                    sum = 0;
                     factory_id = getUrlParam('factory');
-                    station_value = $("#stations_list").val();
+                    logistics_value = $("#logistics_list").val();
                     product_value = $("#products_list").val();
                     getLogistics();
                     getProducts();
-                    $.get("/api/factories/1/stations/0/products/0/order_items",function(data,status){
+                    $.get("/api/factories/"+factory_id+"/logistics/0/products/0/items_products",function(data,status){
                         showOrderItem(data,status);
                     });
                 };
+
+                  // $(document).ready(function()){
+                    $("a[name='order']").click(function(){
+                        window.location.href = "index.html?factory=" + factory_id;
+                    });
+                
+                    $("a[name='income']").click(function(){
+                        window.location.href = "income.html?factory=" + factory_id;
+                    });
+                    $("a[name='ad']").click(function(){
+                        window.location.href = "ad.html?factory=" + factory_id;
+                    });
+                    $("a[name='clothChoose']").click(function(){
+                        window.location.href = "clothChoose.html?factory=" + factory_id;
+                    });
+                    $("a[name='mine']").click(function(){
+                        window.location.href = "mine.html?factory=" + factory_id;
+                    });
+                // }
+
 
                 function showOrderItem(data,status){
                     var item_income;
                     var item_paystatus;
                     $.each(data,function(n,orderItem){
-                        item_income = orderItem.price * orderItem.number;
-                        switch (orderItem.pay_status)
-                        {
-                            case '0':
-                                item_paystatus = "未支付"
-                                break;
-                            case '1':
-                                item_paystatus = "已支付"
-                                break;
-                            case '2':
-                                item_paystatus = "已收入"
-                                break;
-                        }
-                         $("tbody").append("<tr><th>" + orderItem.id + "</th><th>" + orderItem.product_name + "</th><th>" + orderItem.station_name + "</th><th>" + orderItem.price + "</th><th>" + orderItem.number + "</th><th>" + item_income.toFixed(1) + "</th><th>" + item_paystatus + "</th><th>" + orderItem.logistics_name + "</th></tr>");
+                        sum += parseFloat(orderItem.item_price);
+                         $("tbody").append("<tr><th>" + orderItem.id + "</th><th>" + orderItem.order_id + "</th><th>" + orderItem.product_name + "</th><th>" + orderItem.item_price + "</th><th>" + orderItem.logistics_name + "</th><th>");
                     });
+                    $("#sum").html(sum);
                 }
 
                 function getLogistics(){
@@ -312,18 +324,20 @@
                 }
 
                 $("#logistics_list").change(function(){
-                        station_value = $("#logistics_list").val();
+                        sum = 0;
+                        logistics_value = $("#logistics_list").val();
                         product_value = $("#products_list").val();
                         $("tbody").empty();
-                        $.get("/api/factories/1/stations/" + station_value + "/products/" + product_value + "/order_items",function(data,status){
+                        $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
                             showOrderItem(data,status);
                         });
                 });
                 $("#products_list").change(function(){
-                        station_value = $("#stations_list").val();
+                        sum = 0;
+                        logistics_value = $("#logistics_list").val();
                         product_value = $("#products_list").val();
                         $("tbody").empty();
-                        $.get("/api/factories/1/stations/" + station_value + "/products/" + product_value + "/order_items",function(data,status){
+                        $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
                             showOrderItem(data,status);
                         });
                 });

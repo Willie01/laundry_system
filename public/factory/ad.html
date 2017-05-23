@@ -56,7 +56,7 @@
 
   </head>
 
-        <body class="bg-dark dk">
+        <body class="bg-dark dk" onload="init()">
             <div class="bg-dark dk" id="wrap">
                 <div id="top" >
                     <!-- .navbar -->
@@ -124,12 +124,12 @@
                                   
                                   <li class="nav-divider"></li>
                                   <li >
-                                    <a href="index.html">
+                                    <a name="order">
                                       <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;订单管理</span>
                                     </a>
                                   </li>
                                   <li >
-                                    <a href="income.html">
+                                    <a name="income">
                                       <i class="fa fa-columns"></i>
                                       <span class="link-title">
                             收入明细
@@ -137,7 +137,7 @@
                                     </a>
                                   </li>
                                   <li>
-                                    <a href="clothChoose.html">
+                                    <a name="clothChoose">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             衣物分拣
@@ -145,7 +145,7 @@
                                     </a>
                                   </li>
                                   <li class="bg-dark">
-                                    <a href="ad.html">
+                                    <a name="ad">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             公告推送
@@ -153,7 +153,7 @@
                                     </a>
                                   </li>
                                   <li >
-                                    <a href="mine.html">
+                                    <a name="mine">
                                       <i class="fa fa-square-o"></i>
                                       <span class="link-title">
                             账号信息
@@ -180,8 +180,8 @@
                                    <div class="box">
                                     <header>
                                             <ul class="nav nav-tabs nav-justified">
-                                                <li class="active"><a href="ad_sale.html">系统消息</a></li>
-                                              <li ><a href="ad_sale.html">优惠券信息</a></li>
+                                                <li class="active"><a name="ad">系统消息</a></li>
+                                              <li ><a name="ad_sale">优惠券信息</a></li>
                                               
                                               <li></li>
                                                 <li></li>
@@ -283,30 +283,7 @@
             </footer>
             <!-- /#footer -->
             <!-- #helpModal -->
-            <div id="helpModal" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                            <h4 class="modal-title">Modal title</h4>
-                        </div>
-                        <div class="modal-body">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-                                et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum.
-                            </p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                    <!-- /.modal-content -->
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
+
             <!-- /.modal -->
             <!-- /#helpModal -->
             <!--jQuery -->
@@ -327,7 +304,102 @@
             <script src="assets/js/core.js"></script>
             <!-- Metis demo scripts -->
             <script src="assets/js/app.js"></script>
+            <script type="text/javascript">
+                var factory_id;
+                var station_value;
+                var product_value;
+                var logistics_id;
+                var price_type;
+                var city_id;
+                var sum;
 
+                function getUrlParam(name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                     r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                    if (r != null) return unescape(r[2]); return null; //返回参数值
+                }
+
+                function init(){
+                    sum = 0;
+                    factory_id = getUrlParam('factory');
+                    logistics_value = $("#logistics_list").val();
+                    product_value = $("#products_list").val();
+                    getLogistics();
+                    getProducts();
+                    $.get("/api/factories/"+factory_id+"/logistics/0/products/0/items_products",function(data,status){
+                        showOrderItem(data,status);
+                    });
+                };
+
+                  // $(document).ready(function()){
+                    $("a[name='order']").click(function(){
+                        window.location.href = "index.html?factory=" + factory_id;
+                    });
+                
+                    $("a[name='income']").click(function(){
+                        window.location.href = "income.html?factory=" + factory_id;
+                    });
+                    $("a[name='ad']").click(function(){
+                        window.location.href = "ad.html?factory=" + factory_id;
+                    });
+                    $("a[name='clothChoose']").click(function(){
+                        window.location.href = "clothChoose.html?factory=" + factory_id;
+                    });
+                    $("a[name='mine']").click(function(){
+                        window.location.href = "mine.html?factory=" + factory_id;
+                    });
+                    $("a[name='ad_sale']").click(function(){
+                        window.location.href = "ad_sale.html?factory=" + factory_id;
+                    });
+                // }
+
+
+                function showOrderItem(data,status){
+                    var item_income;
+                    var item_paystatus;
+                    $.each(data,function(n,orderItem){
+                        sum += parseFloat(orderItem.item_price);
+                         $("tbody").append("<tr><th>" + orderItem.id + "</th><th>" + orderItem.order_id + "</th><th>" + orderItem.product_name + "</th><th>" + orderItem.item_price + "</th><th>" + orderItem.logistics_name + "</th><th>");
+                    });
+                    $("#sum").html(sum);
+                }
+
+                function getLogistics(){
+                    $.get("/api/logistics",function(data,status){
+                        $.each(data,function(n,logistic){
+                            $("#logistics_list").append("<option value=" + logistic.id + ">" + logistic.logistics_name + "</option>");
+                        });
+                    });
+                }
+
+                function getProducts(){
+                    $.get("/api/products",function(data,status){
+                        $.each(data,function(n,product){
+                            $("#products_list").append("<option value=" + product.id + ">" + product.product_name + "</option>");
+                        });
+                    });
+                }
+
+                $("#logistics_list").change(function(){
+                        sum = 0;
+                        logistics_value = $("#logistics_list").val();
+                        product_value = $("#products_list").val();
+                        $("tbody").empty();
+                        $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
+                            showOrderItem(data,status);
+                        });
+                });
+                $("#products_list").change(function(){
+                        sum = 0;
+                        logistics_value = $("#logistics_list").val();
+                        product_value = $("#products_list").val();
+                        $("tbody").empty();
+                        $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
+                            showOrderItem(data,status);
+                        });
+                });
+
+            </script>
 
 <!--             <script src="assets/js/style-switcher.js"></script> -->
         </body>

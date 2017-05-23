@@ -4,27 +4,38 @@ class ItemsProductsController < ApplicationController
   # GET /items_products
   # GET /items_products.json
   def index
-    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id"]
+    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id"]
   end
 
   # GET /items_products/1
   # GET /items_products/1.json
   def show
-    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.id = ?", params[:id]]
+    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.id = ?", params[:id]]
   end
 
   def itemsbyproduct
-    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.product_id = ?", params[:product_id]]
+    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.product_id = ?", params[:product_id]]
   end
 
   def itemsbylogistics
-    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.logistics_id = ?", params[:logistics_id]]
+    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.logistics_id = ?", params[:logistics_id]]
   end
 
   def itemsbylogisticsandproduct
-    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.product_id = ? AND ip.logistics_id=?",params[:product_id], params[:logistics_id]]
+    @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND ip.logistics_id = lo.id AND ip.product_id = ? AND ip.logistics_id=?",params[:product_id], params[:logistics_id]]
   end
 
+  def itemsbyfactoryandlogisticsandproduct
+    if (params[:logistics_id] == '0') && (params[:product_id] == '0')
+      @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo, orders o, courier_stations cs, station_factories sf WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND oi.order_id = o.id AND o.courier_id = cs.courier_id AND cs.station_id = sf.station_id AND sf.factory_id = ? AND ip.logistics_id = lo.id ",params[:factory_id]]
+    elsif params[:logistics_id] == '0'
+      @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo, orders o, courier_stations cs, station_factories sf WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND oi.order_id = o.id AND o.courier_id = cs.courier_id AND cs.station_id = sf.station_id AND sf.factory_id = ? AND ip.logistics_id = lo.id AND ip.product_id = ?",params[:factory_id], params[:product_id]]
+    elsif params[:product_id] == '0'
+      @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo, orders o, courier_stations cs, station_factories sf WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND oi.order_id = o.id AND o.courier_id = cs.courier_id AND cs.station_id = sf.station_id AND sf.factory_id = ? AND ip.logistics_id = lo.id AND ip.logistics_id=?",params[:factory_id], params[:logistics_id]]
+    else
+      @items_products = ItemsProduct.find_by_sql ["SELECT ip.id, ip.product_id, ip.order_item_id, ip.logistics_id, ip.created_at, ip.item_price, ip.updated_at, p.product_name, oi.order_id, lo.logistics_name FROM items_products ip, products p, order_items oi, logistics lo, orders o, courier_stations cs, station_factories sf WHERE ip.product_id = p.id AND ip.order_item_id = oi.id AND oi.order_id = o.id AND o.courier_id = cs.courier_id AND cs.station_id = sf.station_id AND sf.factory_id = ? AND ip.logistics_id = lo.id AND ip.product_id = ? AND ip.logistics_id=?",params[:factory_id], params[:product_id], params[:logistics_id]]        
+    end
+  end
   # GET /items_products/new
   def new
     @items_product = ItemsProduct.new

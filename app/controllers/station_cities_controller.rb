@@ -4,17 +4,17 @@ class StationCitiesController < ApplicationController
   # GET /station_cities
   # GET /station_cities.json
   def index
-    @station_cities = StationCity.find_by_sql ["SELECT sc.id, sc.city_id, sc.longitude, sc.latitude, sc.status, sc.created_at, sc.updated_at, ct.city_name FROM station_cities sc, cities ct WHERE sc.city_id = ct.id"]
+    @station_cities = StationCity.find_by_sql ["SELECT sc.id, sc.city_id, sc.longitude, sc.latitude, sc.status, sc.created_at, sc.updated_at, sc.station_id, s.station_name, ct.city_name FROM station_cities sc, cities ct, stations s WHERE sc.city_id = ct.id AND sc.station_id = s.id"]
   end
 
   # GET /station_cities/1
   # GET /station_cities/1.json
   def show
-    @station_cities = StationCity.find_by_sql ["SELECT sc.id, sc.city_id, sc.longitude, sc.latitude, sc.status, sc.created_at, sc.updated_at, ct.city_name FROM station_cities sc, cities ct WHERE sc.city_id = ct.id AND sc.id = ?",params[:id]]
+    @station_cities = StationCity.find_by_sql ["SELECT sc.id, sc.city_id, sc.longitude, sc.latitude, sc.status, sc.created_at, sc.updated_at, sc.station_id, s.station_name, ct.city_name FROM station_cities sc, cities ct, stations s WHERE sc.city_id = ct.id AND sc.id = ? AND sc.station_id = s.id",params[:id]]
   end
 
   def stationsbycity
-    @station_cities = StationCity.find_by_sql ["SELECT sc.id, sc.city_id, sc.longitude, sc.latitude, sc.status, sc.created_at, sc.updated_at, ct.city_name FROM station_cities sc, cities ct WHERE sc.city_id = ct.id AND sc.city_id = ?",params[:city_id]]
+    @station_cities = StationCity.find_by_sql ["SELECT sc.id, sc.city_id, sc.longitude, sc.latitude, sc.status, sc.created_at, sc.updated_at, sc.station_id, s.station_name, ct.city_name FROM station_cities sc, cities ct, stations s WHERE sc.city_id = ct.id AND sc.city_id = ? AND sc.station_id = s.id",params[:city_id]]
   end
 
   # GET /station_cities/new
@@ -74,6 +74,6 @@ class StationCitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def station_city_params
-      params.permit(:region_id, :longitude, :latitude, :status)
+      params.permit(:station_id, :longitude, :latitude, :status, :city_id)
     end
 end
