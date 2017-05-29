@@ -1,0 +1,21 @@
+var app=angular.module("app_order_nopay",[]);
+app.controller("order_nopayCtr",["$scope","$http",function($scope,$http){
+	$scope.show_list=function(){
+		$http({
+			method:'GET',
+			url:"http://www.tchautchau.cn/api/statuses/0/orders",
+		}).success(function(data){
+			console.log(data);
+			$scope.orderNum=parseInt(Math.random()*1000000000);
+			console.log();
+			$scope.order_nopay_list=data;
+		}).error(function(){})		
+	}
+	$scope.show_list();
+	$scope.sort_model_hide=function(e){
+		$(e).hide();
+	}
+	$scope.add_sorts=function(e){
+		$(e).show();
+	}
+}])

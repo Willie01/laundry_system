@@ -22,9 +22,15 @@ class ProductsCitiesController < ApplicationController
   def edit
   end
 
-  #GET '/api/cities/:city_id/categories/:category_id/products'
+  #GET '/api/cities/:city_id/categories/:category_id/products_cities'
   def productsbycityandcategory
-    @products_cities = ProductsCity.find_by_sql ["SELECT pc.id, pc.product_id, pc.status, pc.city_id, pc.category_id, pc.created_at, pc.updated_at, p.product_name, ct.city_name, cate.category_name, p.logo, pr.price FROM products_cities pc, products p, cities ct, categories cate, price_rules pr, price_types pt WHERE pt.status = 1 AND pt.id = pr.price_type_id AND pr.products_id = pc.product_id AND pr.city_id = pc.city_id AND pc.city_id = ct.id AND pc.category_id = cate.id AND pc.product_id = p.id AND pc.city_id = ? AND pc.category_id = ?", params[:city_id], params[:category_id]]
+    if (params[:city_id] == '0') && (params[:category_id] == '0')
+      @products_cities = ProductsCity.find_by_sql ["SELECT pc.id, pc.product_id, pc.status, pc.city_id, pc.category_id, pc.created_at, pc.updated_at, p.product_name, ct.city_name, cate.category_name, p.logo, pr.price FROM products_cities pc, products p, cities ct, categories cate, price_rules pr, price_types pt WHERE pt.status = 1 AND pt.id = pr.price_type_id AND pr.products_id = pc.product_id AND pr.city_id = pc.city_id AND pc.city_id = ct.id AND pc.category_id = cate.id AND pc.product_id = p.id "]
+    elsif params[:category_id] == '0'
+      @products_cities = ProductsCity.find_by_sql ["SELECT pc.id, pc.product_id, pc.status, pc.city_id, pc.category_id, pc.created_at, pc.updated_at, p.product_name, ct.city_name, cate.category_name, p.logo, pr.price FROM products_cities pc, products p, cities ct, categories cate, price_rules pr, price_types pt WHERE pt.status = 1 AND pt.id = pr.price_type_id AND pr.products_id = pc.product_id AND pr.city_id = pc.city_id AND pc.city_id = ct.id AND pc.category_id = cate.id AND pc.product_id = p.id AND pc.city_id = ?", params[:city_id]]
+    else
+      @products_cities = ProductsCity.find_by_sql ["SELECT pc.id, pc.product_id, pc.status, pc.city_id, pc.category_id, pc.created_at, pc.updated_at, p.product_name, ct.city_name, cate.category_name, p.logo, pr.price FROM products_cities pc, products p, cities ct, categories cate, price_rules pr, price_types pt WHERE pt.status = 1 AND pt.id = pr.price_type_id AND pr.products_id = pc.product_id AND pr.city_id = pc.city_id AND pc.city_id = ct.id AND pc.category_id = cate.id AND pc.product_id = p.id AND pc.city_id = ? AND pc.category_id = ?", params[:city_id], params[:category_id]]
+    end
   end
 
   # POST /products_cities

@@ -26,7 +26,7 @@ class CouriersController < ApplicationController
     @courier = Courier.find_by(telphone: courier_params_login[:telphone],password: courier_params_login[:password])
     respond_to do |format|
       if @courier
-        format.html { redirect_to @courier, notice: 'Courier was successfully login.' }
+        format.html { redirect_to "/qishou/index.html?courier=#{@courier.id}", notice: 'Courier was successfully login.' }
         format.json { render :show, status: :ok, location: @courier }
       else
         format.json { render json: {status: :unprocessable_entity} }

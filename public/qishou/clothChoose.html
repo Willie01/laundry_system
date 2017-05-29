@@ -1,0 +1,354 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>焕然衣新管理系统</title>
+    
+    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
+    <meta name="author" content="">
+    
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <meta name="msapplication-TileImage" content="assets/img/metis-tile.png" />
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/lib/font-awesome/css/font-awesome.css">
+    
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- metisMenu stylesheet -->
+    <link rel="stylesheet" href="assets/lib/metismenu/metisMenu.css">
+    
+    <!-- onoffcanvas stylesheet -->
+    <link rel="stylesheet" href="assets/lib/onoffcanvas/onoffcanvas.css">
+    
+    <!-- animate.css stylesheet -->
+    <link rel="stylesheet" href="assets/lib/animate.css/animate.css">
+
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    <!--For Development Only. Not required -->
+    <script>
+        less = {
+            env: "development",
+            relativeUrls: false,
+            rootpath: "/assets/"
+        };
+    </script>
+    <link rel="stylesheet" href="assets/css/style-switcher.css">
+    <link rel="stylesheet/less" type="text/css" href="assets/less/theme.less">
+
+  </head>
+
+        <body class="bg-dark dk" onload="init()">
+            <div class="bg-dark dk" id="wrap">
+                <div id="top" >
+                    <!-- .navbar -->
+                    <nav class="navbar navbar-inverse navbar-static-top" style="height:100px;">
+                        <div class="container-fluid">
+                    
+                    
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <header class="navbar-header" style="width:500px;">
+                    
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                    <span class="sr-only">Toggle navigation</span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href="index.html" class="navbar-brand" ><img src="assets/img/logo4.png" alt="" style="height:80px;"></a>
+                    
+                            </header>
+
+                    
+                        <p  style="font-size: 30px;font-weight: bold;color:#fff;">加工商管理平台</p>
+                    
+                            <div class="topnav">
+
+                                <div class="btn-group">
+                                    <a href="login.html" data-toggle="tooltip" data-original-title="退出" data-placement="bottom"
+                                       class="btn btn-metis-1 btn-sm">
+                                        退出
+                                    </a>
+                                </div>
+                                
+                    
+                            </div>
+                    
+                        </div>
+                        <!-- /.container-fluid -->
+                    </nav>
+                    <!-- /.navbar -->
+                        <header class="head">
+                                
+                                <!-- /.search-bar -->
+                            <div class="main-bar">
+                                
+                            </div>
+                            <!-- /.main-bar -->
+                        </header>
+                        <!-- /.head -->
+                </div>
+                <!-- /#top -->
+                    <div id="left">
+                        <div class="media user-media bg-dark dker">
+                            <div class="user-media-toggleHover">
+                                <span class="fa fa-user"></span>
+                            </div>
+                           
+                        </div>
+                        <!-- #menu -->
+                        <ul id="menu" class="bg-dark dker">
+                                <li class="">
+                                    <a href="#">
+                                      <i class="fa"></i><span class="link-title" style="font-size: 20px;font-weight: bold;">&nbsp;&nbsp;主要业务</span>
+                                    </a>
+                                  </li>
+                                  
+                                  <li class="nav-divider"></li>
+                                  <li >
+                                    <a name="order">
+                                      <i class="fa fa-dashboard"></i><span class="link-title">&nbsp;订单管理</span>
+                                    </a>
+                                  </li>
+                                  <li >
+                                    <a name="income">
+                                      <i class="fa fa-columns"></i>
+                                      <span class="link-title">
+                            收入明细
+                            </span>
+                                    </a>
+                                  </li>
+                                  <li class="bg-dark">
+                                    <a name="clothChoose">
+                                      <i class="fa fa-square-o"></i>
+                                      <span class="link-title">
+                            衣物分拣
+                            </span>
+                                    </a>
+                                  </li>
+                                  <li>
+                                    <a name="ad">
+                                      <i class="fa fa-square-o"></i>
+                                      <span class="link-title">
+                            公告推送
+                            </span>
+                                    </a>
+                                  </li>
+                                  <li >
+                                    <a name="mine">
+                                      <i class="fa fa-square-o"></i>
+                                      <span class="link-title">
+                            账号信息
+                            </span>
+                                    </a>
+                                  </li>
+                                  
+                                  <li class="nav-divider"></li>
+                                 
+                                  
+                                </ul>
+                        <!-- /#menu -->
+                    </div>
+                    <!-- /#left -->
+                 <div id="content">
+                    <div class="outer">
+                        <div class="inner bg-light lter">
+                            <div class="row">
+
+                                <!-- .col-lg-12 -->
+                                
+                                <div class="col-lg-12">
+
+                                    <div class="box">
+                                    <div class="form-group">
+                                                <label class="control-label col-lg-1">物流状态</label>
+                                                <div class="col-lg-3">
+                                                    <select id="logistics_list" data-placeholder="请选择物流状态" class="form-control chzn-select" tabindex="7">
+                                                        <option value="0"></option>
+                                                        <option value="40">工厂（待分拣）</option>
+                                                        <option value="42">已分拣（待洗涤）</option>
+                                                    </select>
+                                                </div>
+                                                <label class="control-label col-lg-1">产品选择</label>
+                                                <div class="col-lg-3">
+                                                    <select id="products_list" data-placeholder="请选择产品" class="form-control chzn-select" tabindex="7">
+                                                        <option value="0"></option>
+                                                    </select>
+                                                </div>
+                                               
+                                    </div>
+                                        <div id="borderedTable" class="body collapse in" style="margin-top: 40px;">
+                                            <table class="table table-bordered responsive-table">
+                                             
+                                              <thead>
+                                                <tr>
+                                                  <th>编号</th>
+                                                  <th>订单项ID</th>
+                                                  <th>产品名称</th>
+                                                  <th>交易价格</th>
+                                                  <th>物流状态</th>
+                                                  <th>操作</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+
+                                              </tbody>
+                                            </table>
+                                               
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <!-- /.col-lg-12 -->
+                            </div>
+
+
+                        </div>
+                        <!-- /.inner -->
+                    </div>
+                    <!-- /.outer -->
+                </div>
+                <!-- /#content -->
+
+            </div>
+            <!-- /#wrap -->
+            <footer class="Footer bg-dark dker">
+                <p>2017 &copy; 焕然衣新小分队</p>
+            </footer>
+            <!-- /#footer -->
+
+            <!--jQuery -->
+            <script src="assets/lib/jquery/jquery.js"></script>
+
+
+            <!--Bootstrap -->
+            <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
+            <!-- MetisMenu -->
+            <script src="assets/lib/metismenu/metisMenu.js"></script>
+            <!-- onoffcanvas -->
+            <script src="assets/lib/onoffcanvas/onoffcanvas.js"></script>
+            <!-- Screenfull -->
+            <script src="assets/lib/screenfull/screenfull.js"></script>
+
+
+            <!-- Metis core scripts -->
+            <script src="assets/js/core.js"></script>
+            <!-- Metis demo scripts -->
+            <script src="assets/js/app.js"></script>
+            <script type="text/javascript">
+                var factory_id;
+                var station_value;
+                var product_value;
+                var logistics_id;
+                var price_type;
+                var city_id;
+
+                function getUrlParam(name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                     r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                    if (r != null) return unescape(r[2]); return null; //返回参数值
+                }
+
+                function init(){
+                    factory_id = getUrlParam('factory');
+                    logistics_value = $("#logistics_list").val();
+                    product_value = $("#products_list").val();
+                    getProducts();
+                    $.get("/api/factories/"+factory_id+"/logistics/0/products/0/items_products",function(data,status){
+                        showOrderItem(data,status);
+                    });
+                };
+
+                  // $(document).ready(function()){
+                    $("a[name='order']").click(function(){
+                        window.location.href = "index.html?factory=" + factory_id;
+                    });
+                
+                    $("a[name='income']").click(function(){
+                        window.location.href = "income.html?factory=" + factory_id;
+                    });
+                    $("a[name='ad']").click(function(){
+                        window.location.href = "ad.html?factory=" + factory_id;
+                    });
+                    $("a[name='clothChoose']").click(function(){
+                        window.location.href = "clothChoose.html?factory=" + factory_id;
+                    });
+                    $("a[name='mine']").click(function(){
+                        window.location.href = "mine.html?factory=" + factory_id;
+                    });
+                // }
+
+
+                function showOrderItem(data,status){
+                    var item_income;
+                    var item_paystatus;
+                    $.each(data,function(n,orderItem){
+                        if(orderItem.logistics_id == 40){
+                         $("tbody").append("<tr><th>" + orderItem.id + "</th><th>" + orderItem.order_id + "</th><th>" + orderItem.product_name + "</th><th>" + orderItem.item_price + "</th><th>" + orderItem.logistics_name + "</th><th><button id='item" + orderItem.id + "'>分拣</button></th></tr>");
+                         $("#item"+orderItem.id).click(function(){
+                            $.post("/api/update/items_products/"+orderItem.id,{logistics_id: 42},function(){
+                                $("tbody").empty();
+                            $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
+                                showOrderItem(data,status);
+                                });
+                            });
+                            
+                         });
+                        }
+                        if(orderItem.logistics_id == 42){
+                         $("tbody").append("<tr><th>" + orderItem.id + "</th><th>" + orderItem.order_id + "</th><th>" + orderItem.product_name + "</th><th>" + orderItem.item_price + "</th><th>" + orderItem.logistics_name + "</th><th>已分拣</th></tr>");
+                        }
+                    });
+                    
+                }
+
+
+                function getProducts(){
+                    $.get("/api/products",function(data,status){
+                        $.each(data,function(n,product){
+                            $("#products_list").append("<option value=" + product.id + ">" + product.product_name + "</option>");
+                        });
+                    });
+                }
+
+                $("#logistics_list").change(function(){
+                        logistics_value = $("#logistics_list").val();
+                        product_value = $("#products_list").val();
+                        $("tbody").empty();
+                        $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
+                            showOrderItem(data,status);
+                        });
+                });
+                $("#products_list").change(function(){
+                        logistics_value = $("#logistics_list").val();
+                        product_value = $("#products_list").val();
+                        $("tbody").empty();
+                        $.get("/api/factories/"+factory_id+"/logistics/" + logistics_value + "/products/" + product_value + "/items_products",function(data,status){
+                            showOrderItem(data,status);
+                        });
+                });
+
+            </script>
+
+<!--             <script src="assets/js/style-switcher.js"></script> -->
+        </body>
+
+</html>

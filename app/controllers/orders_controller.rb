@@ -19,7 +19,7 @@ class OrdersController < ApplicationController
 
   def ordersbyuserandlogistics
     if params[:logistics_id] == '0'
-      @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.user_id = ? AND o.logistics_id >= 10 AND o.logistics_id < 20", params[:user_id]]
+      @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.user_id = ? AND o.logistics_id >= 10 AND o.logistics_id < 20 ", params[:user_id]]
     elsif params[:logistics_id] == '1'
       @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.user_id = ? AND o.logistics_id >= 20 AND o.logistics_id < 70", params[:user_id]]
     elsif params[:logistics_id] == '2'
@@ -29,9 +29,21 @@ class OrdersController < ApplicationController
     end
   end 
 
-  # GET /couriers/:courier_id/orders
+  # GET /couriers/:courier_id/loginstics/:logistics_id/orders
+  def ordersbycourierandlogistics
+    if params[:logistics_id] == '0'
+      @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.courier_id = ? AND o.logistics_id = 11", params[:courier_id]]
+    elsif params[:logistics_id] == '1'
+      @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.courier_id = ? AND o.logistics_id >= 20 AND o.logistics_id < 60", params[:courier_id]]
+    elsif params[:logistics_id] == '2'
+      @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.courier_id = ? AND o.logistics_id = 60", params[:courier_id]]
+    else
+      @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.courier_id = ? AND o.logistics_id = ?", params[:courier_id],params[:logistics_id]]
+    end
+  end
+
   def ordersbycourier
-    @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.courier_id = ?", params[:courier_id]]
+      @orders = Order.find_by_sql ["SELECT o.id, o.user_id, o.status, o.item_num, o.total_price, o.address, o.finished_date, o.created_at,o.updated_at,o.appointment_time, o.order_number, o.courier_id, o.city_id, o.order_name, o.logistics_id, o.pay_status_id, u.username, c.courier_name, ct.city_name, lo.logistics_name, p.pay_status_name FROM orders o, users u, couriers c, cities ct, logistics lo, pay_statuses p where o.user_id = u.id AND o.courier_id = c.id AND o.city_id = ct.id AND o.logistics_id = lo.id AND o.pay_status_id = p.id AND o.courier_id = ?", params[:courier_id]]
   end
   # # GET /couriers/:courier_id/statuses/:status/orders
   # def ordersbycourierandstatus

@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/api/users', to:'users#create', format:'json'#参数：username, telphone, password
 
   # 取送人员 登录 接口
-  post '/api/couriers/login', to:'couriers#login', format:'json'#参数：telphone，password
+  post '/api/couriers/login', to:'couriers#login', format:'html'#参数：telphone，password
 
   # 取送人员 注册 接口
   post '/api/couriers', to:'couriers#create', format:'json'#参数：username, telphone, password
@@ -470,7 +470,7 @@ Rails.application.routes.draw do
   resources :operators
 
 
-  # 订单项 相关接口 order_item
+  # 订单项 相关接口 order_items
   # 显示 ‘所有订单项’
   get '/api/order_items', to: 'order_items#index', format: 'json'
 
@@ -511,6 +511,9 @@ Rails.application.routes.draw do
 
   # 显示 ‘某个取送员’ 的 ‘所有订单’
   get '/api/couriers/:courier_id/orders', to: 'orders#ordersbycourier', format: 'json'
+
+  # 显示 ‘某个取送员’ 的 '某个物流状态' 的 ‘所有订单’ （订单状态包括 0:未取单 1:进行中 2:已完成）
+  get '/api/couriers/:courier_id/logistics/:logistics_id/orders', to: 'orders#ordersbycourierandlogistics', format: 'json'
 
   # 显示 ‘某个工厂’ 的 ‘所有订单’
   get '/api/factories/:factory_id/orders', to: 'orders#ordersbyfactory', format: 'json'

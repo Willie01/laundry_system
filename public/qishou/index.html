@@ -1,0 +1,265 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>订单中心</title>
+    
+    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
+    <meta name="author" content="">
+    
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <meta name="msapplication-TileImage" content="assets/img/metis-tile.png" />
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/lib/font-awesome/css/font-awesome.css">
+    
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- metisMenu stylesheet -->
+    <link rel="stylesheet" href="assets/lib/metismenu/metisMenu.css">
+    
+    <!-- onoffcanvas stylesheet -->
+    <link rel="stylesheet" href="assets/lib/onoffcanvas/onoffcanvas.css">
+    
+    <!-- animate.css stylesheet -->
+    <link rel="stylesheet" href="assets/lib/animate.css/animate.css">
+
+
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    <!--For Development Only. Not required -->
+    <script>
+        less = {
+            env: "development",
+            relativeUrls: false,
+            rootpath: "/assets/"
+        };
+    </script>
+    <link rel="stylesheet" href="assets/css/style-switcher.css">
+    <link rel="stylesheet/less" type="text/css" href="assets/less/theme.less">
+
+  </head>
+
+        <body class="bg-dark dk" onload="init()">
+            <div class="bg-dark dk" id="wrap">
+                <div id="top" >
+                    <!-- .navbar -->
+                    <nav class="navbar navbar-inverse navbar-static-top" style="height:100px;">
+                        <div class="container-fluid">
+                    
+                    
+                            <!-- Brand and toggle get grouped for better mobile display -->
+                            <header class="navbar-header" style="width:500px;">
+                    
+
+                                <a href="index.html" class="navbar-brand" ><img src="assets/img/logo4.png" alt="" style="height:80px;"></a>
+                    
+                            </header>
+                    
+                            <div class="topnav">
+
+                                <div class="btn-group">
+                                    <p id="factory_name"></p>
+                                    <a href="login.html" data-toggle="tooltip" data-original-title="退出" data-placement="bottom"
+                                       class="btn btn-metis-1 btn-sm">
+                                        退出
+                                    </a>
+                                </div>
+                                
+                    
+                            </div>
+                    
+                        </div>
+                        <!-- /.container-fluid -->
+                    </nav>
+                    <!-- /.navbar -->
+                        <header class="head">
+                                
+                                <!-- /.search-bar -->
+                            <div class="main-bar">
+                                
+                            </div>
+                            <!-- /.main-bar -->
+                        </header>
+                        <!-- /.head -->
+                </div>
+                <!-- /#top -->
+                    <div id="left">
+                        <div class="media user-media bg-dark dker">
+                            <div class="user-media-toggleHover">
+                                <span class="fa fa-user"></span>
+                            </div>
+                           
+                        </div>
+                        <!-- #menu -->
+                    </div>
+                    <!-- /#left -->
+                 <div id="content">
+                    <div class="outer">
+                        <div class="inner bg-light lter">
+                            <div class="row">
+
+                                <!-- .col-lg-12 -->
+                               
+                                <div class="col-lg-12">
+
+                                    <div class="box">
+                                        <header>
+                                            <ul class="nav nav-tabs nav-justified">
+                                              
+                                              <li value="0" class="active"><a>待取单</a></li>
+                                              <li value="1"><a>进行中</a></li>
+                                              <li value="2"><a>已完成</a></li>
+                                            </ul>     
+                                            
+                                        </header>
+
+                                                                        
+                                        
+
+                                        <div id="borderedTable" class="body collapse in" style="margin-top: 40px;">
+                                            <table class="table table-bordered responsive-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>订单ID</th>
+                                                        <th>订单号</th>
+                                                        <th>订单时间</th>
+                                                        <th>取单时间</th>
+                                                        <th>订单状态</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>                
+                                                </table>
+                                               
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.col-lg-12 -->
+                            </div>
+
+
+                        </div>
+                        <!-- /.inner -->
+                    </div>
+                    <!-- /.outer -->
+                </div>
+                <!-- /#content -->
+
+            </div>
+            <!-- /#wrap -->
+            <footer class="Footer bg-dark dker">
+                <p>2017 &copy; 焕然衣新小分队</p>
+            </footer>
+            <!-- /#footer -->
+
+            <!--jQuery -->
+            <script src="assets/lib/jquery/jquery.js"></script>
+
+
+            <!--Bootstrap -->
+            <script src="assets/lib/bootstrap/js/bootstrap.js"></script>
+            <!-- MetisMenu -->
+            <script src="assets/lib/metismenu/metisMenu.js"></script>
+            <!-- onoffcanvas -->
+            <script src="assets/lib/onoffcanvas/onoffcanvas.js"></script>
+            <!-- Screenfull -->
+            <script src="assets/lib/screenfull/screenfull.js"></script>
+
+
+            <!-- Metis core scripts -->
+            <script src="assets/js/core.js"></script>
+            <!-- Metis demo scripts -->
+            <script src="assets/js/app.js"></script>
+            <script type="text/javascript">
+                var courier_id;
+                var logistics_id;
+
+                function getUrlParam(name) {
+                    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+                     r = window.location.search.substr(1).match(reg);  //匹配目标参数
+                    if (r != null) return unescape(r[2]); return null; //返回参数值
+                }
+
+                function init(){
+                    courier_id = getUrlParam('courier');
+                    logistics_id = 0;
+                    $("tbody").empty();
+                        $.get("/api/couriers/" + courier_id + "/logistics/" + logistics_id + "/orders",function(data,status){
+                                showOrderItem(data,status);
+                        });
+                }
+
+                // $(document).ready(function()){
+                    $("a[name='order']").click(function(){
+                        window.location.href = "index.html?courier=" + courier_id;
+                    });
+                
+                    $("a[name='income']").click(function(){
+                        window.location.href = "income.html?courier=" + courier_id;
+                    });
+                    $("a[name='ad']").click(function(){
+                        window.location.href = "ad.html?courier=" + courier_id;
+                    });
+                    $("a[name='clothChoose']").click(function(){
+                        window.location.href = "clothChoose.html?courier=" + courier_id;
+                    });
+                    $("a[name='mine']").click(function(){
+                        window.location.href = "mine.html?courier=" + courier_id;
+                    });
+                // }
+               
+
+                function showOrderItem(data,status){
+                    $.each(data,function(n,order){
+                        if(order.logistics_id == 11){
+                                $("tbody").append("<tr><th>" + order.id + "</th><th>" + order.order_number + "</th><th>" + order.created_at + "</th><th>" + order.appointment_time + "</th><th>" + order.logistics_name + "</th><th><button id='order" + order.id + "'>下单</button></th></tr>");
+                                        $("#order" + order.id).click(function(){
+                                            window.location.href = "edit.html?courier="+ courier_id + "&order=" + order.id;
+                                });
+                        }else{
+                                $("tbody").append("<tr><th>" + order.id + "</th><th>" + order.order_number + "</th><th>" + order.created_at + "</th><th>" + order.appointment_time + "</th><th>" + order.logistics_name + "</th><th><button id='order" + order.id + "'>查看详情</button></th></tr>");
+                                        $("#order" + order.id).click(function(){
+                                            $.get("/api/orders/" + order.id, function(data,status){
+
+                                            });
+                                });
+                            }
+                    });
+                }
+
+
+
+                $('ul.nav > li').click(function(){
+                    logistics_id = $(this).attr('value');
+                    $('ul.nav > li').removeClass('active');
+                    $(this).addClass('active');
+                     $("tbody").empty();
+                        $.get("/api/couriers/" + courier_id + "/logistics/" + logistics_id + "/orders",function(data,status){
+                                showOrderItem(data,status);
+                        });
+                });
+            </script>
+
+<!--             <script src="assets/js/style-switcher.js"></script> -->
+        </body>
+
+</html>
